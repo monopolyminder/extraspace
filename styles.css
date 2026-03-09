@@ -1014,10 +1014,10 @@ img {
 
 /* ─── FOOTER ─── */
 .site-footer {
-  background: var(--color-hero-bg);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
   padding: 64px 0 32px;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .footer-content {
@@ -1031,12 +1031,12 @@ img {
   font-weight: 800;
   font-size: 1.1rem;
   margin-bottom: 12px;
-  color: #fff;
+  color: var(--color-text);
 }
 
 .footer-main p {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--color-text-muted);
   line-height: 1.7;
 }
 
@@ -1045,25 +1045,27 @@ img {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-muted);
   margin-bottom: 12px;
 }
 
 .footer-disclaimer p {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--color-text-muted);
   line-height: 1.7;
+  opacity: 0.8;
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-border);
   padding-top: 24px;
   text-align: center;
 }
 
 .footer-bottom p {
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--color-text-muted);
+  opacity: 0.6;
 }
 
 /* ─── SCROLL ANIMATIONS ─── */
