@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 /* ─── RESET & BASE ─── */
 *,
 *::before,
@@ -24,16 +26,12 @@
   --color-warning: #b7791f;
   --color-warning-bg: rgba(183, 121, 31, 0.08);
   --color-green: #2DB34A;
-  --color-blue: #1a6b3a;
   --color-hero-bg: #1a2e1a;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
   --max-width: 1120px;
   --radius: 12px;
   --radius-sm: 8px;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 html {
   scroll-behavior: smooth;
@@ -203,6 +201,16 @@ img {
   max-width: 640px;
   margin: 0 auto 40px;
   line-height: 1.8;
+}
+
+.hero-scope {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 24px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
 .cta-btn {
@@ -841,6 +849,16 @@ img {
   font-size: 0.72rem;
   color: var(--color-text-muted);
   font-style: italic;
+}
+
+.review-source a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.review-source a:hover {
+  color: var(--color-accent-dark);
 }
 
 /* ─── RESPONSE CARDS ─── */
