@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const fadeTargets = document.querySelectorAll(
     '.step-card, .review-card, .info-block, .algo-detail, .stat-card, .timeline-item, ' +
-    '.monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card'
+    '.monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card, .response-card, .response-rebuttal'
   );
 
   fadeTargets.forEach(el => el.classList.add('fade-in'));
