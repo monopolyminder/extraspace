@@ -18,8 +18,19 @@
   <title>Extra Space Scam - Consumer Awareness | ExtraSpaceScam.com</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;display=swap"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;display=swap">
+  </noscript>
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -64,8 +75,52 @@
     <div class="hero-inner">
       <div class="hero-layout">
         <div class="hero-media">
-          <div class="hero-video-frame">
-            <iframe src="https://www.youtube.com/embed/ZHKLErRY-Zo?si=kJtlMAeqHReAAWi3" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <div class="hero-video-frame" id="heroVideoHost">
+            <button
+              type="button"
+              class="hero-video-facade js-yt-facade"
+              id="heroVideoTrigger"
+              data-yt-id="ZHKLErRY-Zo"
+              aria-label="Play video: overview of Extra Space Storage and consumer complaints"
+            >
+              <img
+                class="hero-video-poster"
+                src="https://i.ytimg.com/vi/ZHKLErRY-Zo/maxresdefault.jpg"
+                alt=""
+                width="1280"
+                height="720"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              >
+              <div class="yt-facade-chrome" aria-hidden="true">
+                <div class="yt-facade-top">
+                  <div class="yt-facade-meta">
+                    <span class="yt-facade-title">NYC sues self-storage company over pricing</span>
+                    <span class="yt-facade-channel">CBS New York</span>
+                  </div>
+                </div>
+                <div class="yt-facade-play-wrap">
+                  <span class="yt-facade-play-btn">
+                    <svg class="yt-facade-play-triangle" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <path fill="#ffffff" d="M8 4.5v15L20.5 12 8 4.5z"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="yt-facade-bottom">
+                  <span class="yt-facade-watermark">CBS NEWS <em>NEW YORK</em></span>
+                  <span class="yt-facade-watch-pill">
+                    <span class="yt-facade-brand">
+                      <svg class="yt-facade-brand-mark" viewBox="0 0 24 18" width="22" height="17" focusable="false" aria-hidden="true">
+                        <rect width="24" height="18" rx="4" fill="#ff0000"/>
+                        <path fill="#ffffff" d="M9.5 4.5v9l7.5-4.5-7.5-4.5z"/>
+                      </svg>
+                      <span class="yt-facade-brand-name">YouTube</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
         <div class="hero-copy">
@@ -715,7 +770,5 @@
       </div>
     </div>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
