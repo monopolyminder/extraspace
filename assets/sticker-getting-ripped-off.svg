@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Self-contained sticker; QR embedded. https://extraspacescam.com/ -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000" width="1000" height="1000" role="img" aria-labelledby="stickerSqTitle">
+  <title id="stickerSqTitle">ExtraSpaceScam sticker — scan for site</title>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .head-url { font-size: 44px; font-family: Arial, Helvetica, sans-serif; fill: #ffffff; letter-spacing: -0.035em; }
+      .headline { font: 900 52px Arial, Helvetica, sans-serif; fill: #2a2a2a; letter-spacing: -0.03em; }
+      .footer-line { font: 500 26px Arial, Helvetica, sans-serif; fill: #333333; }
+      .hash { font: 800 30px Arial, Helvetica, sans-serif; fill: #0a0a0a; letter-spacing: 0.02em; }
+    ]]></style>
+  </defs>
+
+  <rect width="1000" height="1000" rx="44" ry="44" fill="#ffffff"/>
+
+  <!-- Header: deep green like typical storage branding (not olive favicon tone) -->
+  <path fill="#245c31" d="M 44,0 H 956 Q 1000,0 1000,44 V 236 H 0 V 44 Q 0,0 44,0 Z"/>
+  <rect y="232" width="1000" height="5" fill="#cde950"/>
+
+  <!-- Mark: white facade + lime accents (warehouse / roll-door read) -->
+  <g transform="translate(42, 54)" aria-hidden="true">
+    <rect x="0" y="0" width="136" height="16" rx="5" fill="#cde950"/>
+    <rect x="4" y="16" width="128" height="92" rx="10" fill="#ffffff"/>
+    <rect x="40" y="38" width="56" height="62" rx="6" fill="#cde950" stroke="#ffffff" stroke-width="2.5"/>
+    <line x1="44" y1="50" x2="92" y2="50" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="44" y1="60" x2="92" y2="60" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="44" y1="70" x2="92" y2="70" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="44" y1="80" x2="92" y2="80" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+    <line x1="44" y1="90" x2="92" y2="90" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/>
+  </g>
+
+  <text x="198" y="142" class="head-url">
+    <tspan font-weight="700">Extra</tspan><tspan font-weight="700">Space</tspan><tspan font-weight="700">Scam</tspan><tspan font-weight="500" font-size="39px">.com</tspan>
+  </text>
+
+  <text x="500" y="348" text-anchor="middle" class="headline">Getting ripped off?</text>
+
+  <image
+    x="300"
+    y="392"
+    width="400"
+    height="400"
+    href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACDElEQVR4nO3bMW7DMAwFUAYZOuYIPoqPZh/NR8kRPHYIxFoUKVFxWjSDEwb4nARZLxMtULRC9HxM3GLOE2MeXYnONuvHWyQQkOPJzRJ0UJJazo5c5s+81jQGAYlKLjmnv92jry3hZX6hNq8vBQjIp5DTNpbI88IJBOT9RCNntQz+kckgIO8nGkKYl5NwC79Xt+oCBCQc4RYlydOj6qIFCEhI0oU+uk/4vwIE5ABi1YVkcq6Nl1xdXHOGr6URQX17DQQkJCEyctVHyU5591EyP4GAhCRaG+fw1YWENoe51tLtXQABOZZo80ELXe6KXs9L1QECEpJMpYoozYd+2cX2YRkvxFaQgIDEIxJCSNtrtaWmDWG2RoQsnRIISEQysfu0caO6XUssedFQ5/37AgJyLNFHOpZWbmupuaNcmQcBCUmIrKKQWOv+7KqOeVddgIBEI605rL8wasXhWmpWXchJMIGARCbte/EvXbiRbR4E5CVkqfd4JXxLrRIq4xkEJC6xqMsk6kUdjVKBJBCQiKSLs2sU93UyWXsNBOQFZOIW8ohOu+yd3e10IhCQkKS/nb6W49vglrElv6yadhfaQUCCkP7E5y9P6k/5F4FBQD6BtO1auP737XFzGATkRaRlctmrt/ldBQICEpNoDCXJ2ynQt9Taz4KAxCQ+sfWLmyT8rdu65SKlfeYAAYlHno8fBpAacK5g/xwAAAAASUVORK5CYII="
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQAQMAAAC6caSPAAAABlBMVEX///8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAACDElEQVR4nO3bMW7DMAwFUAYZOuYIPoqPZh/NR8kRPHYIxFoUKVFxWjSDEwb4nARZLxMtULRC9HxM3GLOE2MeXYnONuvHWyQQkOPJzRJ0UJJazo5c5s+81jQGAYlKLjmnv92jry3hZX6hNq8vBQjIp5DTNpbI88IJBOT9RCNntQz+kckgIO8nGkKYl5NwC79Xt+oCBCQc4RYlydOj6qIFCEhI0oU+uk/4vwIE5ABi1YVkcq6Nl1xdXHOGr6URQX17DQQkJCEyctVHyU5591EyP4GAhCRaG+fw1YWENoe51tLtXQABOZZo80ELXe6KXs9L1QECEpJMpYoozYd+2cX2YRkvxFaQgIDEIxJCSNtrtaWmDWG2RoQsnRIISEQysfu0caO6XUssedFQ5/37AgJyLNFHOpZWbmupuaNcmQcBCUmIrKKQWOv+7KqOeVddgIBEI605rL8wasXhWmpWXchJMIGARCbte/EvXbiRbR4E5CVkqfd4JXxLrRIq4xkEJC6xqMsk6kUdjVKBJBCQiKSLs2sU93UyWXsNBOQFZOIW8ohOu+yd3e10IhCQkKS/nb6W49vglrElv6yadhfaQUCCkP7E5y9P6k/5F4FBQD6BtO1auP737XFzGATkRaRlctmrt/ldBQICEpNoDCXJ2ynQt9Taz4KAxCQ+sfWLmyT8rdu65SKlfeYAAYlHno8fBpAacK5g/xwAAAAASUVORK5CYII="
+  />
+
+  <text x="500" y="850" text-anchor="middle" class="footer-line">stories@extraspacescam.com</text>
+  <text x="500" y="908" text-anchor="middle" class="hash">#ExtraSpaceScam</text>
+</svg>

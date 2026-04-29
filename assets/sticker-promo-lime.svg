@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ExtraSpaceScam sticker. Print: 4 x 2.25 in. Outline text before sending to printer. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-labelledby="stickerTitle">
+  <title id="stickerTitle">ExtraSpaceScam sticker - extraspacescam.com</title>
+  <defs>
+    <style type="text/css"><![CDATA[
+      .bg { fill: #cde950; }
+      .rule { fill: none; stroke: #0a0a0a; stroke-width: 5; }
+      .url {
+        fill: #0a0a0a;
+        font: 700 56px Arial, Helvetica, sans-serif;
+        letter-spacing: -0.04em;
+      }
+      .tag {
+        fill: #0a0a0a;
+        font: 600 32px Arial, Helvetica, sans-serif;
+        letter-spacing: 0.06em;
+      }
+    ]]></style>
+  </defs>
+  <rect class="bg" width="1200" height="675" rx="40"/>
+  <rect class="rule" x="28" y="28" width="1144" height="619" rx="32"/>
+  <text
+    x="600"
+    y="258"
+    text-anchor="middle"
+    fill="#0a0a0a"
+    font-size="84"
+    font-family="Arial, Helvetica, sans-serif"
+    letter-spacing="-3"
+  >
+    <tspan font-weight="700">Extra</tspan>
+    <tspan font-weight="700">Space</tspan>
+    <tspan font-weight="400">Storage</tspan>
+    <tspan font-weight="700">Scam</tspan>
+  </text>
+  <text x="600" y="410" text-anchor="middle" class="url">extraspacescam.com</text>
+  <text x="600" y="500" text-anchor="middle" class="tag">#ExtraSpaceScam</text>
+</svg>
