@@ -382,10 +382,9 @@ img {
 
 .yt-facade-play-triangle {
   display: block;
-  width: clamp(20px, 5.2vw, 28px);
+  width: clamp(24px, 6.2vw, 32px);
   height: auto;
   aspect-ratio: 1;
-  margin-left: 5px;
   flex-shrink: 0;
 }
 
