@@ -173,11 +173,26 @@ img {
 
 .nav-logo {
   font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.02em;
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: -0.035em;
   color: var(--ttpf-black);
   text-decoration: none;
+  line-height: 1.1;
+}
+
+.site-wordmark {
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.site-wordmark-heavy {
+  font-weight: 700;
+}
+
+.site-wordmark-light {
+  font-weight: 400;
 }
 
 .nav-logo:hover {
@@ -1286,9 +1301,11 @@ section.tone-dark h2 {
 }
 
 .footer-title {
-  font-weight: 800;
-  font-size: 1.05rem;
+  font-weight: 400;
+  font-size: 1.25rem;
   margin-bottom: 10px;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
 }
 
 .footer-main p {
@@ -1389,6 +1406,11 @@ section.tone-dark h2 {
 
   .nav-toggle {
     display: flex;
+  }
+
+  .nav-logo {
+    font-size: clamp(0.82rem, 3.5vw, 1.25rem);
+    max-width: min(100%, calc(100vw - 120px));
   }
 
   .hero {
