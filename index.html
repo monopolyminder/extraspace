@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7ab800">
+  <meta name="msapplication-TileColor" content="#7ab800">
+  <script>
+    /* Resolve theme before first paint: stored choice, else OS preference */
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = (stored === 'light' || stored === 'dark')
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="description" content="Consumer awareness resource on Extra Space Storage's pricing and market-consolidation practices, based on a 2026 NYC lawsuit, class actions, and 1,400+ Better Business Bureau complaints.">
+  <meta property="og:title" content="It's Not a Storage Unit. It's a Trap.">
+  <meta property="og:description" content="How Extra Space Storage's pricing and market consolidation are alleged to work against customers, based on a 2026 NYC lawsuit, class actions, and 1,400+ Better Business Bureau complaints.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://extraspacescam.com">
+  <meta property="og:image" content="https://extraspacescam.com/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="It's Not a Storage Unit. It's a Trap.">
+  <meta name="twitter:description" content="How Extra Space Storage's pricing and market consolidation are alleged to work against customers, based on lawsuits and 1,400+ Better Business Bureau complaints.">
+  <meta name="twitter:image" content="https://extraspacescam.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://extraspacescam.com/">
+  <title>Extra Space Scam - Consumer Awareness | ExtraSpaceScam.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
+  <link
+    rel="preload"
+    as="style"
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Kalam:wght@700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;display=swap"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Kalam:wght@700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;display=swap">
+  </noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "ExtraSpaceScam.com",
+    "url": "https://extraspacescam.com",
+    "description": "Consumer awareness resource on Extra Space Storage's pricing and market-consolidation practices, based on a 2026 NYC lawsuit, class actions, and 1,400+ Better Business Bureau complaints.",
+    "datePublished": "2026-02-01",
+    "dateModified": "2026-06-07",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ExtraSpaceScam.com",
+      "url": "https://extraspacescam.com"
+    },
+    "about": {
+      "@type": "Organization",
+      "name": "Extra Space Storage",
+      "url": "https://www.extraspace.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "I found a really low rate online. Is it a trap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The rate is usually real, but temporary. The advertised \"no long-term contract\" pricing can be raised at any time, and complaints and the NYC lawsuit describe increases that started within a few months of move-in. Treat the introductory rate as a starting point, not the price you'll keep paying."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much could my rent actually go up?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A lot, and fast. NYC's DCWP documented one customer's rent rising 165% in three months ($290 to $479), and another going from $120 to $320 in a single month. Customer complaints describe rates doubling or tripling within a year. A safe assumption is that your rate will at least double, so budget for that before you commit."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Before I rent, what should I check?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ask directly whether the facility is owned or managed by Extra Space, since \"competing\" locations nearby may be the same company under a different name. Read the rate-increase and arbitration clauses in the agreement, and ask for a written commitment on rate stability. If they won't put it in writing, take that as your answer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "My rate just jumped. What can I do right now?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Document everything first: save the original rate, the increase notice, and the dates. Then file complaints with your state Attorney General, the Better Business Bureau, and the Federal Trade Commission. Run the numbers on moving out, even with the hassle, it's often cheaper than months at the inflated rate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can they really auction off my belongings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "According to the NYC lawsuit, customers who fell behind on inflated payments were threatened with having their stored property auctioned, and some reported locks changed and units cleared. Storage liens are governed by state law, so look up your state's self-storage lien rules and respond to any notice in writing immediately rather than ignoring it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can't I just sue them?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You sometimes can, but it's an uphill fight. Most rental agreements include a mandatory arbitration clause that keeps disputes out of public court and blocks class actions, which is what ended the Ionescu case. Even in court, a judge can refuse to certify a class if each customer's situation is considered too individual to group, as in Curtis. Lawsuits do still land, though: the Gomes case ended in a $5.08 million settlement over improperly auctioned belongings. For most people, filing complaints with regulators is faster and cheaper, and a stack of them on record is harder to ignore."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is their insurance or \"protection plan\" worth it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Be cautious. The NYC DCWP complaint describes customers who filed claims for damaged or destroyed property being pointed to liability limitation clauses, including reports of more than $100,000 in damage from rats and water with little or nothing recovered. Check whether your existing renter's or homeowner's policy already covers stored belongings before paying for theirs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are other storage companies any better?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Several large operators use similar dynamic-pricing and promotional-rate tactics. This site focuses on Extra Space because it's the largest operator and the subject of the most legal action. Wherever you rent, ask who actually owns the facility and get the rate terms in writing."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="ttpf-ui" id="top">
+
+    <nav class="section-rail" id="sectionRail" aria-label="Section navigation">
+    <span class="rail-fill" aria-hidden="true"></span>
+    <a class="rail-link" href="#lawsuits"><span class="rail-label">Lawsuits</span><span class="rail-dot" aria-hidden="true"></span></a>
+    <a class="rail-link" href="#hidden"><span class="rail-label">Hidden in Plain Sight</span><span class="rail-dot" aria-hidden="true"></span></a>
+    <a class="rail-link" href="#faq"><span class="rail-label">FAQ</span><span class="rail-dot" aria-hidden="true"></span></a>
+    <a class="rail-link" href="#action"><span class="rail-label">Take Action</span><span class="rail-dot" aria-hidden="true"></span></a>
+    <a class="rail-link" href="#protect"><span class="rail-label">Protect Yourself</span><span class="rail-dot" aria-hidden="true"></span></a>
+  </nav>
+
+  <nav class="top-nav" id="topNav">
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo" aria-label="ExtraSpaceScam — home">
+        <span class="site-wordmark" aria-hidden="true">
+          <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins">Scam</span>
+        </span>
+      </a>
+            <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#lawsuits">Lawsuits</a></li>
+          <li class="nav-dropdown">
+            <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="navHowItWorksMenu" id="navHowItWorksBtn">
+              How It Works
+              <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8 9.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <ul class="nav-dropdown-menu" id="navHowItWorksMenu" role="menu" aria-labelledby="navHowItWorksBtn">
+              <li role="none"><a role="menuitem" href="how-it-works.html#model">The Model</a></li>
+              <li role="none"><a role="menuitem" href="how-it-works.html#algorithm">The Algorithm</a></li>
+              <li role="none"><a role="menuitem" href="how-it-works.html#monopoly">The Monopoly</a></li>
+            </ul>
+          </li>
+          <li><a href="#action">Take Action</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-layout">
+        <div class="hero-media">
+          <div class="hero-video-frame" id="heroVideoHost">
+            <button
+              type="button"
+              class="hero-video-facade js-yt-facade"
+              id="heroVideoTrigger"
+              data-yt-id="ZHKLErRY-Zo"
+              aria-label="Play video: overview of Extra Space Storage and consumer complaints"
+            >
+              <img
+                class="hero-video-poster"
+                src="https://i.ytimg.com/vi/ZHKLErRY-Zo/maxresdefault.jpg"
+                alt=""
+                width="1280"
+                height="720"
+                loading="eager"
+                decoding="async"
+                fetchpriority="high"
+              >
+              <div class="yt-facade-chrome" aria-hidden="true">
+                <div class="yt-facade-top">
+                  <div class="yt-facade-meta">
+                    <span class="yt-facade-title">NYC sues self-storage company over pricing</span>
+                    <span class="yt-facade-channel">CBS New York</span>
+                  </div>
+                </div>
+                <div class="yt-facade-play-wrap">
+                  <span class="yt-facade-play-btn">
+                    <svg class="yt-facade-play-triangle" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <path fill="#ffffff" d="M8 4 L8 20 L20 12 Z"/>
+                    </svg>
+                  </span>
+                </div>
+                <div class="yt-facade-bottom">
+                  <span class="yt-facade-watermark">CBS NEWS <em>NEW YORK</em></span>
+                  <span class="yt-facade-watch-pill">
+                    <span class="yt-facade-brand">
+                      <svg class="yt-facade-brand-mark" viewBox="0 0 24 18" width="22" height="17" focusable="false" aria-hidden="true">
+                        <rect width="24" height="18" rx="4" fill="#ff0000"/>
+                        <path fill="#ffffff" d="M9.5 4.5v9l7.5-4.5-7.5-4.5z"/>
+                      </svg>
+                      <span class="yt-facade-brand-name">YouTube</span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="hero-copy">
+          <h1 class="hero-megatitle">
+            <span class="hero-megatitle-line">It's Not a</span>
+            <span class="hero-megatitle-line">Storage Unit.</span>
+            <span class="hero-megatitle-line hero-megatitle-line--accent">It's a Trap.</span>
+          </h1>
+          <div class="hero-text">
+            <p class="hero-lead">Extra Space Storage is not a neighborhood storage company, it's a Wall Street REIT (NYSE: EXR).</p>
+            <p class="hero-sub">They advertise a low rate, then use algorithmic pricing and market consolidation to raise it once your belongings are locked in. A 2026 NYC lawsuit and multiple class actions allege exactly that, and the Better Business Bureau has logged over 1,400 complaints.</p>
+          </div>
+          <div class="hero-ctas">
+            <a href="#action" class="cta-btn hero-cta">Take Action &darr;</a>
+            <a href="how-it-works.html" class="cta-btn cta-btn--outline hero-cta">See How It Works &rarr;</a>
+            <p class="cta-note">Have your own story? <a href="mailto:stories@extraspacescam.com">Share it with us</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ─── LAWSUITS ─── -->
+  <section id="lawsuits" class="section band-alt">
+    <div class="container">
+      <span class="section-label">On the Record</span>
+      <h2>Lawsuits</h2>
+      <p class="section-intro">
+        New York City is suing Extra Space Storage right now. Government
+        agencies and courts have taken formal action before. Here's what's
+        on record.
+      </p>
+
+      <div class="case-featured case-card">
+        <div class="case-badge case-badge--lead">2026 &middot; Active &middot; Government lawsuit</div>
+        <h3>NYC DCWP v. Extra Space Storage</h3>
+        <p class="case-court">New York City Department of Consumer and Worker Protection</p>
+        <div class="case-highlights">
+          <p class="case-highlight">Documents cases of <strong>165%</strong> rate increases within months</p>
+          <p class="case-highlight">Alleges bait-and-switch pricing, junk fees, vermin-infested units, and predatory practices</p>
+          <p class="case-highlight">Seeks <strong>$5+ million</strong> in civil penalties and full consumer restitution</p>
+        </div>
+        <ul class="case-footnotes">
+          <li>First-ever city lawsuit against a self-storage company</li>
+          <li>Based on <strong>100+ consumer complaints</strong></li>
+          <li>Property damage over <strong>$100,000</strong> from facility neglect</li>
+          <li>Prompted <strong>Local Law 171 of 2025</strong>, requiring every NYC self-storage facility to be licensed by DCWP</li>
+        </ul>
+        <a href="https://www.nyc.gov/site/dca/news/016-26/dcwp-sues-extra-space-bait-and-switch-pricing-vermin-infested-units-junk-fees-other" class="source-link" target="_blank" rel="noopener">Source: NYC.gov Official Press Release &rarr;</a>
+      </div>
+
+      <h3 class="cases-subhead">Earlier cases</h3>
+
+      <div class="cases-grid cases-grid--archive">
+        <div class="case-card case-card--outcome">
+          <div class="case-badge">$5.08M Settlement</div>
+          <h3>Gomes v. Extra Space Storage Inc.</h3>
+          <p class="case-court">U.S. District Court, District of New Jersey (2:2013cv00929)</p>
+          <ul>
+            <li><strong>$5.08 million class-action settlement</strong> (final approval 2017, no admission of wrongdoing)</li>
+            <li>The suit alleged Extra Space sold a customer's belongings at auction <em>before</em> the deadline it had given him to pay</li>
+            <li>The settlement covered roughly <strong>155,000 customers</strong></li>
+          </ul>
+          <a href="https://www.insideselfstorage.com/self-storage-investing-real-estate/judge-approves-5m-class-action-settlement-against-self-storage-reit-extra-space" class="source-link" target="_blank" rel="noopener">Source: Inside Self-Storage &rarr;</a>
+        </div>
+
+        <div class="case-card case-card--muted">
+          <div class="case-badge case-badge--muted">2019 &middot; Forced to arbitration</div>
+          <h3>Ionescu v. Extra Space Storage Inc.</h3>
+          <p class="case-court">U.S. District Court, Northern District of California (4:19-cv-02226)</p>
+          <ul>
+            <li>Same bait-and-switch pattern: advertise a low rate, then raise it within months</li>
+            <li><strong>The merits were never heard.</strong> The court enforced the arbitration clause and dismissed the case</li>
+          </ul>
+          <a href="https://www.courtlistener.com/docket/14991526/ionescu-v-extra-space-storage-inc/" class="source-link" target="_blank" rel="noopener">Source: CourtListener &rarr;</a>
+        </div>
+
+        <div class="case-card case-card--muted">
+          <div class="case-badge case-badge--muted">2013 &middot; Class denied</div>
+          <h3>Curtis v. Extra Space Storage Inc.</h3>
+          <p class="case-court">U.S. District Court, Northern District of California (3:13-cv-00319)</p>
+          <ul>
+            <li>Alleged defective lien notices and improper auctioning of tenants' belongings</li>
+            <li>The judge refused to certify the class because each renter's situation was <strong>"too individual"</strong> to group</li>
+          </ul>
+          <a href="https://topclassactions.com/lawsuit-settlements/lawsuit-news/judge-stops-extra-space-storage-class-action-lawsuit/" class="source-link" target="_blank" rel="noopener">Source: Top Class Actions &rarr;</a>
+        </div>
+      </div>
+
+      <div class="legal-note">
+        <h3>Why So Many Cases Never Reach a Verdict</h3>
+        <p>
+          A dismissal doesn't mean the company did nothing wrong. Extra Space's
+          contracts push most disputes into private arbitration, where there is
+          no public record, and that is what ended <em>Ionescu</em>. When a case
+          does reach court, a judge can refuse to certify a class because each
+          customer's situation is treated as "too individual" to group, as in
+          <em>Curtis</em>. The customers hit hardest are usually mid-move and
+          short on cash, so most never have the time or money to fight a
+          multibillion-dollar company on their own, let alone refile after a
+          setback. The $5 million <em>Gomes</em> settlement, the NYC lawsuit,
+          and the pattern of online complaints point to a much larger problem.
+        </p>
+      </div>
+
+      <div class="bbb-note">
+        <h3>1,492 Better Business Bureau Complaints</h3>
+        <p>
+          On top of the lawsuits, the Better Business Bureau has logged
+          <strong>1,492 complaints</strong> against Extra Space Storage in just
+          the last three years. The same story comes up over and over: a low
+          introductory rate, then sudden, massive increases with no real
+          explanation.
+        </p>
+        <a href="https://www.bbb.org/us/ut/cottonwood-heights/profile/storage-units/extra-space-management-inc-1166-4001764/complaints" class="source-link" target="_blank" rel="noopener">View Better Business Bureau Complaint Profile &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT THEY DON'T TELL YOU ─── -->
+  <section id="hidden" class="section band-alt">
+    <div class="container">
+      <span class="section-label">Hidden in Plain Sight</span>
+      <h2>What Most People Don't Know</h2>
+      <p class="section-intro">
+        The things that matter most about renting from Extra Space are the ones
+        that never make it into the ad. Here's what tends to surface only after
+        you've already signed.
+      </p>
+
+      <div class="reveal-grid">
+        <div class="reveal-card">
+          <h3>Forced Arbitration Keeps It Quiet</h3>
+          <p>
+            Their rental agreements include mandatory arbitration clauses.
+            If you try to sue, the case gets pushed into a private proceeding
+            instead of a public courtroom. No class actions, no public record.
+            The Ionescu case in California was sent to arbitration over the
+            plaintiff's objection. This is how patterns stay hidden.
+          </p>
+        </div>
+
+        <div class="reveal-card">
+          <h3>They Can Auction Your Belongings</h3>
+          <p>
+            According to the NYC lawsuit, when customers push back on rate
+            increases or fall behind on inflated payments, Extra Space has
+            threatened to auction off their stored property. Some customers
+            reported locks being changed and belongings cleared without
+            proper legal notice.
+          </p>
+        </div>
+
+        <div class="reveal-card">
+          <h3>Insurance They Sell May Not Cover Much</h3>
+          <p>
+            Extra Space pushes its own "protection plan" at sign-up. But per
+            the NYC DCWP complaint, when customers filed claims for damaged
+            or destroyed property, they were pointed to liability limitation
+            clauses. Customers reported over $100,000 in damages from rats
+            and water and got nothing back.
+          </p>
+        </div>
+
+        <div class="reveal-card">
+          <h3>Notice Periods Are Shorter Than You Think</h3>
+          <p>
+            The NYC lawsuit alleges that Extra Space raised rates without
+            providing the 30-day notice specified in their own contracts.
+            Even when they do give notice, it's the minimum allowed by law.
+            By the time you get the letter, you have days, not weeks, to
+            figure out what to do.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section id="faq" class="section">
+    <div class="container">
+      <span class="section-label">Questions &amp; Answers</span>
+      <h2>If You're Stuck or Considering Extra Space</h2>
+      <p class="section-intro">
+        Straight answers to the questions people ask most, whether you're about
+        to rent a unit or already dealing with a sudden rate hike.
+      </p>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary class="faq-q">I found a really low rate online. Is it a trap?</summary>
+          <div class="faq-a">
+            <p>
+              The rate is usually real, but temporary. The advertised "no
+              long-term contract" pricing can be raised at any time, and
+              complaints and the NYC lawsuit describe increases that started
+              within a few months of move-in. Treat the introductory rate as a
+              starting point, not the price you'll keep paying.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">How much could my rent actually go up?</summary>
+          <div class="faq-a">
+            <p>
+              A lot, and fast. NYC's DCWP documented one customer's rent rising
+              165% in three months ($290 to $479), and another going from $120
+              to $320 in a single month. Customer complaints describe rates
+              doubling or tripling within a year. A safe assumption is that your
+              rate will at least double, so budget for that before you commit.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Before I rent, what should I check?</summary>
+          <div class="faq-a">
+            <p>
+              Ask directly whether the facility is owned or managed by Extra
+              Space, since "competing" locations nearby may be the same company
+              under a different name. Read the rate-increase and arbitration
+              clauses in the agreement, and ask for a written commitment on rate
+              stability. If they won't put it in writing, take that as your
+              answer.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">My rate just jumped. What can I do right now?</summary>
+          <div class="faq-a">
+            <p>
+              Document everything first: save the original rate, the increase
+              notice, and the dates. Then file complaints with your
+              <a href="https://www.usa.gov/state-attorney-general" target="_blank" rel="noopener">state Attorney General</a>,
+              the <a href="https://www.bbb.org" target="_blank" rel="noopener">Better Business Bureau</a>,
+              and the <a href="https://www.ftc.gov/complaint" target="_blank" rel="noopener">Federal Trade Commission</a>.
+              Run the numbers on moving out, even with the hassle, it's often
+              cheaper than months at the inflated rate.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Can they really auction off my belongings?</summary>
+          <div class="faq-a">
+            <p>
+              According to the NYC lawsuit, customers who fell behind on inflated
+              payments were threatened with having their stored property
+              auctioned, and some reported locks changed and units cleared.
+              Storage liens are governed by state law, so look up your state's
+              self-storage lien rules and respond to any notice in writing
+              immediately rather than ignoring it.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Why can't I just sue them?</summary>
+          <div class="faq-a">
+            <p>
+              You sometimes can, but it's an uphill fight. Most rental agreements
+              include a mandatory arbitration clause that keeps disputes out of
+              public court and blocks class actions, which is what ended the
+              <em>Ionescu</em> case. Even in court, a judge can refuse to certify
+              a class if each customer's situation is considered "too individual"
+              to group, as in <em>Curtis</em>. Lawsuits do still land, though: the
+              <em>Gomes</em> case ended in a <strong>$5.08 million settlement</strong>
+              over improperly auctioned belongings. For most people, filing
+              complaints with regulators is faster and cheaper, and a stack of
+              them on record is harder to ignore.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Is their insurance or "protection plan" worth it?</summary>
+          <div class="faq-a">
+            <p>
+              Be cautious. The NYC DCWP complaint describes customers who filed
+              claims for damaged or destroyed property being pointed to liability
+              limitation clauses, including reports of more than $100,000 in
+              damage from rats and water with little or nothing recovered. Check
+              whether your existing renter's or homeowner's policy already covers
+              stored belongings before paying for theirs.
+            </p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-q">Are other storage companies any better?</summary>
+          <div class="faq-a">
+            <p>
+              Several large operators use similar dynamic-pricing and
+              promotional-rate tactics. This site focuses on Extra Space because
+              it's the largest operator and the subject of the most legal action.
+              Wherever you rent, ask who actually owns the facility and get the
+              rate terms in writing.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TAKE ACTION: RECOURSE TOOLKIT ─── -->
+  <section id="action" class="section band-alt">
+    <div class="container">
+      <span class="section-label">Take Action</span>
+      <h2>You're Not as Stuck as They Want You to Think</h2>
+      <p class="section-intro">
+        Extra Space rarely ends up in open court, and not because they play
+        fair. Their contracts route disputes into private arbitration and ban
+        class actions. But that same system leaves you a few real, low-cost
+        moves most people never hear about.
+      </p>
+
+      <div class="cases-grid">
+        <div class="case-card">
+          <span class="recourse-label">Start Here</span>
+          <h3>Document Everything</h3>
+          <p class="case-court">Do this before you do anything else</p>
+          <ul>
+            <li>Save the original advertised rate, every rate-increase notice, and the date each one arrived</li>
+            <li>Keep your lease, especially the arbitration and rate-increase clauses</li>
+            <li>Photograph the unit's condition and anything that got damaged</li>
+            <li>Facing an auction? Look up your state's Self-Storage Facility Act. Selling early, wrong notices, or wrong amounts owed are violations, which is what the Gomes and Curtis cases were about</li>
+          </ul>
+        </div>
+
+        <div class="case-card">
+          <span class="recourse-label">Option &middot; Arbitration</span>
+          <h3>Use Their Own Clause Against Them</h3>
+          <p class="case-court">Usually the American Arbitration Association (AAA)</p>
+          <ul>
+            <li>Your lease requires arbitration. Check it for the named provider (usually the AAA), then start a claim yourself with a one-page Consumer Demand for Arbitration</li>
+            <li>You pay a filing fee capped around <strong>$225</strong>, and hardship waivers exist. Extra Space has to pay the rest, usually <strong>$1,700 or more</strong></li>
+            <li>File online at adr.org, by email, or by mail, and send Extra Space a copy</li>
+            <li>It costs them far more than it costs you, and a wave of individual claims is the one thing their class-action ban can't stop</li>
+          </ul>
+          <a href="https://adr.org/rules-forms-and-fees/consumer/" class="source-link" target="_blank" rel="noopener">AAA Consumer Demand for Arbitration &rarr;</a>
+        </div>
+
+        <div class="case-card">
+          <span class="recourse-label">Option &middot; Small Claims</span>
+          <h3>Take Them to Small Claims Court</h3>
+          <p class="case-court">Often the simplest path for a specific loss</p>
+          <ul>
+            <li>Most arbitration clauses carve out small claims. Read yours to confirm</li>
+            <li>Limits run roughly <strong>$5,000 to $12,500</strong> depending on your state. No lawyer required, and filing fees are usually $35 to $50</li>
+            <li>Send a written demand first, then file with your county clerk and have Extra Space served</li>
+            <li>Best for a concrete dollar amount: an auctioned unit, a wrongful charge, or damaged property</li>
+          </ul>
+          <a href="https://www.lawhelp.org" class="source-link" target="_blank" rel="noopener">Find free small-claims help in your state &rarr;</a>
+        </div>
+
+        <div class="case-card">
+          <span class="recourse-label">Always &middot; Report It</span>
+          <h3>Put It on the Record</h3>
+          <p class="case-court">Regulators act on volume</p>
+          <ul>
+            <li>File with your <a href="https://www.usa.gov/state-attorney-general" target="_blank" rel="noopener">state Attorney General</a> and the <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">Federal Trade Commission</a></li>
+            <li>Add a complaint to the <a href="https://www.bbb.org" target="_blank" rel="noopener">Better Business Bureau</a> and your local consumer-protection office. In NYC, the DCWP is already suing, so add yours to their pile</li>
+            <li>The NYC case exists because more than 100 people complained. Every report you file is a brick in the next one</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="legal-note">
+        <h3>Before You File</h3>
+        <p>
+          None of this is legal advice, and the exact rules depend on your
+          rental agreement and your state. Read your contract's dispute section
+          closely, and if you can, get help first.
+          <a href="https://www.lawhelp.org" target="_blank" rel="noopener">LawHelp.org</a>
+          connects you with free legal aid and court self-help centers in your
+          state. Been through this yourself? Email
+          <a href="mailto:stories@extraspacescam.com">stories@extraspacescam.com</a>.
+          Anonymized stories help the next person know they're not imagining it,
+          and they rebuild the public record arbitration is built to erase.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SECTION 6: PROTECT YOURSELF ─── -->
+  <section id="protect" class="section band-green">
+    <div class="container">
+      <span class="section-label">Fight Back</span>
+      <h2>How to Protect Yourself</h2>
+
+      <div class="protect-grid">
+        <div class="protect-card">
+          <h3>Before You Rent</h3>
+          <ul>
+            <li>Search for independently owned storage facilities in your area</li>
+            <li>Ask explicitly: "Is this facility owned or managed by Extra Space Storage?"</li>
+            <li>Request a written commitment on rate stability. If they won't give one, walk away</li>
+            <li>Read the full rental agreement, especially arbitration and rate-increase clauses</li>
+            <li>Calculate the true cost: assume your rate will at least double within a year</li>
+          </ul>
+        </div>
+
+        <div class="protect-card">
+          <h3>If You're Already a Customer</h3>
+          <ul>
+            <li>Document every rate increase with dates and screenshots</li>
+            <li>You have more options than you think. See <a href="#action">Take Action</a> for filing arbitration, small claims, and complaints</li>
+            <li>Consider moving your belongings before the next increase</li>
+          </ul>
+        </div>
+
+        <div class="protect-card">
+          <h3>Spread the Word</h3>
+          <ul>
+            <li>Share this page with friends and family considering self-storage</li>
+            <li>Leave honest, detailed reviews on Google, Yelp, and the Better Business Bureau</li>
+            <li>Contact your local news station. Consumer reporters cover these stories</li>
+            <li>Post on social media with <strong>#ExtraSpaceScam</strong> to help others find this information</li>
+            <li>Support legislation requiring price transparency in self-storage</li>
+            <li>Have your own story? Email <a href="mailto:stories@extraspacescam.com">stories@extraspacescam.com</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section page-return band-alt">
+    <div class="container">
+      <span class="section-label">Deep Dive</span>
+      <h2>See How It Works</h2>
+      <p class="section-intro">The bait-and-switch playbook, the pricing algorithm, market consolidation, and what Extra Space says in its own defense.</p>
+      <div class="page-return-actions">
+        <a href="how-it-works.html" class="cta-btn">See How It Works &rarr;</a>
+        <p class="cta-note">Have your own story? <a href="mailto:stories@extraspacescam.com">Share it with us</a></p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-disclaimer">
+          <h4>Disclaimer</h4>
+          <p>
+            This website is an independent consumer advocacy resource and is not
+            affiliated with, endorsed by, or sponsored by any company mentioned.
+            All factual claims are based on publicly available sources including
+            court filings, government agency press releases, academic
+            publications, and news reporting, and all sources are cited.
+          </p>
+          <p>
+            The lawsuits and complaints described here contain allegations that
+            have not been proven in court, and where a company has resolved a
+            case by settlement, it did so without admitting liability. The
+            conclusions and characterizations on this site, including words such
+            as "trap" and "scam," are the authors' opinions.
+          </p>
+          <p>
+            This site does not provide legal advice. If you represent a company
+            mentioned here and believe something is inaccurate, email
+            <a href="mailto:editor@extraspacescam.com">editor@extraspacescam.com</a>
+            and we will review and correct it promptly. If you believe you have
+            been harmed by deceptive business practices, consult a licensed
+            attorney in your jurisdiction.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-main">
+          <p class="footer-title">
+            <span class="site-wordmark">
+              <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins">Scam</span>
+            </span>
+          </p>
+        </div>
+        <p>&copy; 2026 ExtraSpaceScam.com. All rights reserved.</p>
+        <p class="last-updated">Last updated: June 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+    <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  </button>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+</body>
+</html>
