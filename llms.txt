@@ -1,0 +1,28 @@
+# ExtraSpaceScam.com
+
+> An independent, non-affiliated consumer-awareness resource documenting how Extra Space Storage (NYSE: EXR) is alleged to use bait-and-switch introductory pricing, algorithmic rate increases, and market consolidation against self-storage customers. Every factual claim is sourced to public records: a 2026 New York City lawsuit, federal court filings, the company's own academic paper and public statements, and 1,400+ Better Business Bureau complaints.
+
+Key context for summarizers:
+- All allegations are unproven in court; settlements were made without admission of liability; words like "trap" and "scam" are the authors' stated opinions. See the disclaimer in any full-text page.
+- The site's purpose is consumer protection: warning prospective renters and giving current customers concrete, low-cost recourse (documentation, arbitration, small claims, regulator complaints).
+- Primary anchor case: NYC Department of Consumer and Worker Protection (DCWP) v. Extra Space Storage, filed 2026.
+
+## Pages
+- [Overview / Home](https://extraspacescam.com/): The core argument, the active NYC lawsuit and earlier cases (Gomes, Ionescu, Curtis), the 1,400+ BBB complaints, what customers aren't told, an FAQ, and a step-by-step "Take Action" recourse toolkit.
+- [How It Works](https://extraspacescam.com/how-it-works.html): The bait-and-switch playbook (4 steps), the "Adaptive Dynamic Pricing" (DPDM) algorithm, the acquisition/monopoly timeline, and Extra Space's own public statements with rebuttal.
+- [About](https://extraspacescam.com/about.html): Why the site exists, how it was sourced, and how readers can act or submit their own story.
+
+## Full content for ingestion
+- [llms-full.txt](https://extraspacescam.com/llms-full.txt): The complete text of all three pages as clean Markdown, with sources, in one file.
+
+## Key sources cited on the site
+- [NYC DCWP press release: lawsuit over bait-and-switch pricing, vermin-infested units, junk fees](https://www.nyc.gov/site/dca/news/016-26/dcwp-sues-extra-space-bait-and-switch-pricing-vermin-infested-units-junk-fees-other)
+- [Gomes v. Extra Space Storage — $5.08M class-action settlement (Inside Self-Storage)](https://www.insideselfstorage.com/self-storage-investing-real-estate/judge-approves-5m-class-action-settlement-against-self-storage-reit-extra-space)
+- [Ionescu v. Extra Space Storage — sent to arbitration (CourtListener docket)](https://www.courtlistener.com/docket/14991526/ionescu-v-extra-space-storage-inc/)
+- [Curtis v. Extra Space Storage — class certification denied (Top Class Actions)](https://topclassactions.com/lawsuit-settlements/lawsuit-news/judge-stops-extra-space-storage-class-action-lawsuit/)
+- [Chen & Sondhi, "Revenue Management at Extra Space Storage LLC," Int'l Journal of Revenue Management (2009)](https://ecommons.udayton.edu/mis_fac_pub/20/)
+- [Better Business Bureau complaint profile](https://www.bbb.org/us/ut/cottonwood-heights/profile/storage-units/extra-space-management-inc-1166-4001764/complaints)
+
+## Contact
+- Reader stories: stories@extraspacescam.com
+- Corrections: editor@extraspacescam.com

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#7ab800">
+  <meta name="msapplication-TileColor" content="#7ab800">
+  <script>
+    /* Flag JS availability so CSS can serve no-JS fallbacks */
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+    /* Resolve theme before first paint: stored choice, else OS preference */
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var theme = (stored === 'light' || stored === 'dark')
+          ? stored
+          : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+    })();
+    /* First ever homepage visit: play the full hero intro (headline builds,
+       then the logo draws). Every other load just plays the logo flourish up
+       to 3 times per session. Skipped entirely for reduced motion. Done in
+       <head> so hidden start states are set before first paint (no flash). */
+    (function () {
+      try {
+        /* Crawlers, link unfurlers, Lighthouse/PageSpeed and headless renderers
+           get the instant, fully-rendered page (no intro) for the best LCP. */
+        if (/bot|crawl|spider|slurp|bingpreview|lighthouse|pagespeed|headless|facebookexternalhit|embedly|whatsapp|telegram/i.test(navigator.userAgent || '')) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var isHome = location.pathname === '/' || /\/index\.html$/.test(location.pathname);
+        if (isHome && !localStorage.getItem('intro-seen')) {
+          document.documentElement.classList.add('intro');
+          localStorage.setItem('intro-seen', '1');
+        } else {
+          var plays = parseInt(sessionStorage.getItem('wm-plays') || '0', 10);
+          if (plays < 3) {
+            document.documentElement.classList.add('wordmark-animate');
+            sessionStorage.setItem('wm-plays', String(plays + 1));
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <meta name="description" content="Why ExtraSpaceScam.com exists: rebuilding the public record on Extra Space Storage from lawsuits, court filings, and consumer complaints.">
+  <meta property="og:title" content="About ExtraSpaceScam.com">
+  <meta property="og:description" content="Why this independent consumer resource exists and how it was built from public records.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://extraspacescam.com/about.html">
+  <meta property="og:image" content="https://extraspacescam.com/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="It's Not a Storage Unit. It's a Trap. ExtraSpaceScam.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About ExtraSpaceScam.com">
+  <meta name="twitter:description" content="Why this independent consumer resource exists and how it was built from public records.">
+  <meta name="twitter:image" content="https://extraspacescam.com/og-image.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://extraspacescam.com/about.html">
+  <title>About | ExtraSpaceScam.com</title>
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="dns-prefetch" href="https://i.ytimg.com">
+  <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body class="ttpf-ui" id="top">
+
+    <nav class="top-nav" id="topNav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="ExtraSpaceScam — home">
+        <span class="site-wordmark" aria-hidden="true">
+          <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins"><span class="wm-fallback">Scam</span><svg class="wm-hand" viewBox="0 0 300 100" aria-hidden="true"><filter id="wmink" x="-15%" y="-25%" width="130%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.13" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter><g filter="url(#wmink)"><path pathLength="1" d="M54,31 C52,18 34,15 25,22 C16,29 18,39 33,44 C48,49 56,56 52,68 C48,80 29,82 16,71"/><path pathLength="1" d="M130,29 C112,16 87,20 81,48 C76,71 98,82 128,71"/><path pathLength="1" d="M158,80 C164,55 175,33 187,18 C193,36 200,58 206,80 M166,58 C177,55 191,55 199,58"/><path pathLength="1" d="M232,80 C231,56 232,33 236,19 C244,40 252,56 259,66 C266,55 274,38 281,19 C284,40 283,58 281,80"/></g></svg></span>
+        </span>
+      </a>
+            <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#lawsuits">Lawsuits</a></li>
+          <li class="nav-dropdown">
+            <a href="how-it-works.html" class="nav-dropdown-toggle">
+              How It Works
+              <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8 9.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li role="none"><a role="menuitem" href="how-it-works.html#model">The Model</a></li>
+              <li role="none"><a role="menuitem" href="how-it-works.html#algorithm">The Algorithm</a></li>
+              <li role="none"><a role="menuitem" href="how-it-works.html#monopoly">The Monopoly</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#action">Take Action</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="about.html" aria-current="page">About</a></li>
+        </ul>
+        <input type="checkbox" id="navToggle" class="nav-toggle-cb">
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+    <header class="page-head page-head--green">
+    <div class="container">
+      <span class="section-label">About</span>
+      <h1>Why This Site Exists</h1>
+      <p class="section-intro">An independent consumer resource built from public records.</p>
+    </div>
+  </header>
+
+  <!-- ─── WHY THIS EXISTS ─── -->
+  <section id="why" class="section">
+    <div class="container">
+      <h2>The Record They'd Rather You Couldn't See</h2>
+      <p class="section-intro">
+        This site is not affiliated with Extra Space Storage. It was built from
+        public records: a city lawsuit, court filings, the company's own
+        academic paper, its public statements, and more than a thousand Better Business Bureau
+        complaints. Every claim here links to its source.
+      </p>
+      <p class="section-intro">
+        The reason these stories rarely make headlines is by design. Forced
+        arbitration keeps disputes out of public courtrooms, and class-action
+        bans keep customers from pooling their cases. The one service that used
+        to help people file arbitration claims, FairShake, shut down in 2023
+        after companies made the process harder. So the evidence stays
+        scattered and quiet.
+      </p>
+      <p class="section-intro" style="margin-bottom:0;">
+        So this page puts it all back in one place. If you're already stuck,
+        maybe something here helps. If you're about to sign, take it as a
+        warning. And if they already got you, you're not alone. Got a
+        story of your own? It belongs here too.
+      </p>
+    </div>
+  </section>
+
+  <section id="take-action" class="section band-alt">
+    <div class="container">
+      <span class="section-label">Fight Back</span>
+      <h2>What You Can Do From Here</h2>
+      <p class="section-intro" style="margin-bottom: 28px;">
+        This site is built to help you act, not just read. Start with the
+        step-by-step toolkit on the homepage, or add your experience to the
+        record.
+      </p>
+
+      <div class="action-matrix">
+        <a href="index.html#action" class="action-cell case-card">
+          <span class="recourse-label">Toolkit</span>
+          <h3>See the Full Take Action Guide</h3>
+          <p>Document everything, file arbitration, use small claims, and report to your state Attorney General, the Federal Trade Commission, and the Better Business Bureau.</p>
+          <span class="action-cell-link">Go to Take Action &rarr;</span>
+        </a>
+
+        <a href="mailto:stories@extraspacescam.com" class="action-cell case-card">
+          <span class="recourse-label">Share</span>
+          <h3>Email Your Story</h3>
+          <p>Tell us what happened. Anonymized stories help the next person know they're not alone and rebuild the public record arbitration is built to erase.</p>
+          <span class="action-cell-link">stories@extraspacescam.com &rarr;</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+<footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-disclaimer">
+          <h4>Disclaimer</h4>
+          <p>
+            This website is an independent consumer advocacy resource and is not
+            affiliated with, endorsed by, or sponsored by any company mentioned.
+            All factual claims are based on publicly available sources including
+            court filings, government agency press releases, academic
+            publications, and news reporting, and all sources are cited.
+          </p>
+          <p>
+            The lawsuits and complaints described here contain allegations that
+            have not been proven in court, and where a company has resolved a
+            case by settlement, it did so without admitting liability. The
+            conclusions and characterizations on this site, including words such
+            as "trap" and "scam," are the authors' opinions.
+          </p>
+          <p>
+            This site does not provide legal advice. If you represent a company
+            mentioned here and believe something is inaccurate, email
+            <a href="mailto:editor@extraspacescam.com">editor@extraspacescam.com</a>
+            and we will review and correct it promptly. If you believe you have
+            been harmed by deceptive business practices, consult a licensed
+            attorney in your jurisdiction.
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-main">
+          <p class="footer-title">
+            <span class="site-wordmark" aria-hidden="true">
+              <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins"><span class="wm-fallback">Scam</span><svg class="wm-hand" viewBox="0 0 300 100" aria-hidden="true"><filter id="wmink" x="-15%" y="-25%" width="130%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.13" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter><g filter="url(#wmink)"><path pathLength="1" d="M54,31 C52,18 34,15 25,22 C16,29 18,39 33,44 C48,49 56,56 52,68 C48,80 29,82 16,71"/><path pathLength="1" d="M130,29 C112,16 87,20 81,48 C76,71 98,82 128,71"/><path pathLength="1" d="M158,80 C164,55 175,33 187,18 C193,36 200,58 206,80 M166,58 C177,55 191,55 199,58"/><path pathLength="1" d="M232,80 C231,56 232,33 236,19 C244,40 252,56 259,66 C266,55 274,38 281,19 C284,40 283,58 281,80"/></g></svg></span>
+            </span>
+          </p>
+        </div>
+        <p>&copy; 2026 ExtraSpaceScam.com. All rights reserved.</p>
+        <p class="last-updated">Last updated: June 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+    <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+  </button>
+
+  <fieldset class="theme-switch">
+    <legend class="theme-switch-legend">Color theme</legend>
+    <input type="radio" name="theme-pref" id="themeAuto" class="theme-switch-input" checked>
+    <label for="themeAuto" class="theme-switch-label">Auto</label>
+    <input type="radio" name="theme-pref" id="themeLight" class="theme-switch-input">
+    <label for="themeLight" class="theme-switch-label">Light</label>
+    <input type="radio" name="theme-pref" id="themeDark" class="theme-switch-input">
+    <label for="themeDark" class="theme-switch-label">Dark</label>
+  </fieldset>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+</body>
+</html>

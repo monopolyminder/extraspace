@@ -1,0 +1,174 @@
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.hero-video-poster').forEach(img => {
+    img.addEventListener('error', function fallbackPoster() {
+      img.removeEventListener('error', fallbackPoster);
+      const id = img.closest('.js-yt-facade')?.dataset?.ytId;
+      if (id) img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    });
+  });
+
+  document.querySelectorAll('.js-yt-facade').forEach(trigger => {
+    const host = trigger.closest('.hero-video-frame');
+    if (!host) return;
+    const id = trigger.dataset.ytId;
+    if (!id) return;
+
+    const load = () => {
+      if (trigger.getAttribute('data-loaded') === 'true') return;
+      trigger.setAttribute('data-loaded', 'true');
+      trigger.remove();
+
+      const iframe = document.createElement('iframe');
+      iframe.className = 'hero-video-iframe';
+      iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0`;
+      iframe.title = 'Video: Extra Space Storage consumer awareness overview';
+      iframe.setAttribute(
+        'allow',
+        'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+      );
+      iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      iframe.allowFullscreen = true;
+      host.appendChild(iframe);
+    };
+
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      load();
+    });
+  });
+
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('themeToggle');
+  const themeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+  const systemTheme = () => (themeMedia.matches ? 'dark' : 'light');
+
+  const applyTheme = theme => {
+    root.setAttribute('data-theme', theme);
+    if (themeToggle) {
+      themeToggle.setAttribute(
+        'aria-label',
+        theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+      );
+    }
+  };
+
+  applyTheme(root.getAttribute('data-theme') || systemTheme());
+
+  themeMedia.addEventListener('change', () => {
+    let stored = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch (e) {}
+    if (stored !== 'light' && stored !== 'dark') applyTheme(systemTheme());
+  });
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const next =
+        (root.getAttribute('data-theme') || systemTheme()) === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try {
+        localStorage.setItem('theme', next);
+      } catch (e) {}
+    });
+  }
+
+  const sectionRail = document.getElementById('sectionRail');
+  const railFill = sectionRail?.querySelector('.rail-fill');
+  const backToTop = document.getElementById('backToTop');
+
+  const onScroll = () => {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const ratio = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    if (railFill) railFill.style.setProperty('--rail-progress', ratio.toFixed(4));
+    const pastHero = window.scrollY > window.innerHeight * 0.6;
+    if (sectionRail) sectionRail.classList.toggle('visible', pastHero);
+    if (backToTop) backToTop.classList.toggle('visible', window.scrollY > window.innerHeight * 1.2);
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
+
+  if (backToTop) {
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  // Sync active state across the top-nav links and the vertical rail links
+  const sectionLinkMap = new Map();
+  document.querySelectorAll('.nav-links a[href^="#"], .rail-link[href^="#"]').forEach(a => {
+    const section = document.getElementById(a.getAttribute('href').slice(1));
+    if (!section) return;
+    if (!sectionLinkMap.has(section)) sectionLinkMap.set(section, []);
+    sectionLinkMap.get(section).push(a);
+  });
+
+  if (sectionLinkMap.size) {
+    const spy = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          sectionLinkMap.forEach(links => links.forEach(l => l.classList.remove('active')));
+          sectionLinkMap.get(entry.target)?.forEach(l => l.classList.add('active'));
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+    );
+    sectionLinkMap.forEach((links, section) => spy.observe(section));
+  }
+
+  // The top-nav is fully CSS-only now: a checkbox-hack hamburger drives the
+  // mobile menu, and the "How It Works" flyout opens on :hover / :focus-within.
+  // Both work identically with or without JS, so there's no nav script.
+
+  // "Earlier cases" expander: open by default on desktop, collapsed on narrow
+  // viewports, while leaving the caret usable at any width.
+  const caseExpander = document.querySelector('.case-collapse');
+  if (caseExpander) {
+    const wideView = window.matchMedia('(min-width: 901px)');
+    let userToggled = false;
+    let syncing = false;
+
+    const syncExpander = () => {
+      if (userToggled) return;
+      syncing = true;
+      caseExpander.open = wideView.matches;
+      syncing = false;
+    };
+
+    caseExpander.addEventListener('toggle', () => {
+      if (!syncing) userToggled = true;
+    });
+
+    syncExpander();
+    wideView.addEventListener('change', syncExpander);
+  }
+
+  const fadeTargets = document.querySelectorAll(
+    '.step-card, .faq-item, .info-block, .algo-detail, .stat-card, .timeline-item, ' +
+    '.monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card, .response-card, .response-rebuttal'
+  );
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  // Only animate elements that start below the fold. Anything already on screen
+  // at load stays fully visible, so it never blinks out and fades back in.
+  const viewportH = window.innerHeight;
+  fadeTargets.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < viewportH && rect.bottom > 0;
+    if (alreadyVisible) return;
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+});
