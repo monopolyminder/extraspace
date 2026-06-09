@@ -402,6 +402,34 @@ img {
   transform-origin: left bottom;
 }
 
+/* JS swaps the Kalam "Scam" for hand-drawn single-stroke lettering that can be
+   "written" with the pen. No-JS / Tor (which blocks SVG) keep the Kalam text. */
+.site-wordmark-ins .wm-hand {
+  display: none;
+}
+
+.js .site-wordmark-ins .wm-fallback {
+  display: none;
+}
+
+.js .site-wordmark-ins .wm-hand {
+  display: inline-block;
+  height: 0.92em;
+  width: auto;
+  overflow: visible;
+  vertical-align: -0.1em;
+  transform: skewX(-11deg);
+  transform-origin: center bottom;
+}
+
+.site-wordmark-ins .wm-hand path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 12.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .site-wordmark-ins::before {
   content: '';
   position: absolute;
@@ -428,6 +456,57 @@ img {
   transform: translateY(calc(-50% + 0.07em)) rotate(-1deg);
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 22' preserveAspectRatio='none'%3E%3Cfilter id='i' x='-15%25' y='-45%25' width='130%25' height='190%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.2'/%3E%3C/filter%3E%3Cg filter='url(%23i)'%3E%3Cpath d='M2,13 C20,7 40,18 60,11 C80,5 100,17 118,9' fill='none' stroke='%23f5232b' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M3,11.5 C24,8 44,15 62,12 C82,8 101,14 117,11' fill='none' stroke='%23f5232b' stroke-width='2.4' stroke-linecap='round' opacity='0.45'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
   pointer-events: none;
+}
+
+/* ── Wordmark "pen correction" animation (nav logo only) ──
+   JS adds .wordmark-animate for the first few page views (see head script).
+   The slash drags across "Storage", the caret flicks in, then each letter of
+   "SCAM" is drawn stroke-by-stroke like a ballpoint. Reduced-motion users and
+   no-JS / Tor visitors get the static mark. */
+@media (prefers-reduced-motion: no-preference) {
+  .wordmark-animate .top-nav .site-wordmark-strike::after {
+    clip-path: inset(0 100% 0 0);
+    animation: wm-strike 0.72s 0.4s cubic-bezier(0.55, 0.06, 0.27, 1) forwards;
+  }
+
+  /* The insertion caret flicks in just before "SCAM" is written. */
+  .wordmark-animate .top-nav .site-wordmark-ins::before {
+    opacity: 0;
+    transform: scale(0.4);
+    transform-origin: 60% 100%;
+    animation: wm-caret 0.2s 1.28s cubic-bezier(0.34, 0.8, 0.3, 1) forwards;
+  }
+
+  /* Each letter is a single-stroke path drawn tip-to-tail with stroke-dashoffset,
+     one after the next, so the ink flows along the letterforms like a pen. */
+  .wordmark-animate .top-nav .wm-hand path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: wm-draw 0.42s linear forwards;
+  }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(1) { animation-delay: 1.4s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(2) { animation-delay: 1.9s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(3) { animation-delay: 2.4s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(4) { animation-delay: 2.9s; }
+}
+
+@keyframes wm-strike {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes wm-caret {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes wm-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 .nav-logo:hover {

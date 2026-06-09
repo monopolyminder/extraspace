@@ -19,6 +19,19 @@
         document.documentElement.setAttribute('data-theme', theme);
       } catch (e) {}
     })();
+    /* Play the wordmark "pen correction" up to 3 times per session as the
+       visitor moves between pages (skip if the user prefers reduced motion).
+       Done in <head> so the hidden start state is set before first paint. */
+    (function () {
+      try {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var plays = parseInt(sessionStorage.getItem('wm-plays') || '0', 10);
+        if (!reduce && plays < 3) {
+          document.documentElement.classList.add('wordmark-animate');
+          sessionStorage.setItem('wm-plays', String(plays + 1));
+        }
+      } catch (e) {}
+    })();
   </script>
   <meta name="description" content="Consumer awareness resource on Extra Space Storage's pricing and market-consolidation practices, based on a 2026 NYC lawsuit, class actions, and 1,400+ Better Business Bureau complaints.">
   <meta property="og:title" content="It's Not a Storage Unit. It's a Trap.">
@@ -153,7 +166,7 @@
     <div class="nav-inner">
       <a href="#top" class="nav-logo" aria-label="ExtraSpaceScam — home">
         <span class="site-wordmark" aria-hidden="true">
-          <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins">Scam</span>
+          <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins"><span class="wm-fallback">Scam</span><svg class="wm-hand" viewBox="0 0 300 100" aria-hidden="true"><filter id="wmink" x="-15%" y="-25%" width="130%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.13" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter><g filter="url(#wmink)"><path pathLength="1" d="M54,31 C52,18 34,15 25,22 C16,29 18,39 33,44 C48,49 56,56 52,68 C48,80 29,82 16,71"/><path pathLength="1" d="M130,29 C112,16 87,20 81,48 C76,71 98,82 128,71"/><path pathLength="1" d="M158,80 C164,55 175,33 187,18 C193,36 200,58 206,80 M166,58 C177,55 191,55 199,58"/><path pathLength="1" d="M232,80 C231,56 232,33 236,19 C244,40 252,56 259,66 C266,55 274,38 281,19 C284,40 283,58 281,80"/></g></svg></span>
         </span>
       </a>
             <div class="nav-right">
@@ -708,8 +721,8 @@
       <div class="footer-bottom">
         <div class="footer-main">
           <p class="footer-title">
-            <span class="site-wordmark">
-              <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins">Scam</span>
+            <span class="site-wordmark" aria-hidden="true">
+              <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins"><span class="wm-fallback">Scam</span><svg class="wm-hand" viewBox="0 0 300 100" aria-hidden="true"><filter id="wmink" x="-15%" y="-25%" width="130%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.13" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter><g filter="url(#wmink)"><path pathLength="1" d="M54,31 C52,18 34,15 25,22 C16,29 18,39 33,44 C48,49 56,56 52,68 C48,80 29,82 16,71"/><path pathLength="1" d="M130,29 C112,16 87,20 81,48 C76,71 98,82 128,71"/><path pathLength="1" d="M158,80 C164,55 175,33 187,18 C193,36 200,58 206,80 M166,58 C177,55 191,55 199,58"/><path pathLength="1" d="M232,80 C231,56 232,33 236,19 C244,40 252,56 259,66 C266,55 274,38 281,19 C284,40 283,58 281,80"/></g></svg></span>
             </span>
           </p>
         </div>
