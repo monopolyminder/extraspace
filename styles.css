@@ -2223,6 +2223,25 @@ img {
   display: none;
 }
 
+/* The strike-through and insertion caret are drawn with inline SVG, which Tor's
+   "Safest" level disables along with JS. Fall back to plain CSS shapes so the
+   wordmark still reads as a correction (a solid red strike + a chevron caret). */
+.no-js .site-wordmark-strike::after {
+  height: 0.14em;
+  background: var(--pen-red);
+  border-radius: 1px;
+}
+
+.no-js .site-wordmark-ins::before {
+  width: 0.3em;
+  height: 0.3em;
+  bottom: 0;
+  background: none;
+  border-top: 0.09em solid var(--pen-red);
+  border-left: 0.09em solid var(--pen-red);
+  transform: rotate(45deg);
+}
+
 /* Follow the OS colour scheme when JS can't resolve [data-theme] — unless the
    visitor has explicitly picked "Light". */
 @media (prefers-color-scheme: dark) {
