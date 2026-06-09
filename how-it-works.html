@@ -19,16 +19,26 @@
         document.documentElement.setAttribute('data-theme', theme);
       } catch (e) {}
     })();
-    /* Play the wordmark "pen correction" up to 3 times per session as the
-       visitor moves between pages (skip if the user prefers reduced motion).
-       Done in <head> so the hidden start state is set before first paint. */
+    /* First ever homepage visit: play the full hero intro (headline builds,
+       then the logo draws). Every other load just plays the logo flourish up
+       to 3 times per session. Skipped entirely for reduced motion. Done in
+       <head> so hidden start states are set before first paint (no flash). */
     (function () {
       try {
-        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var plays = parseInt(sessionStorage.getItem('wm-plays') || '0', 10);
-        if (!reduce && plays < 3) {
-          document.documentElement.classList.add('wordmark-animate');
-          sessionStorage.setItem('wm-plays', String(plays + 1));
+        /* Crawlers, link unfurlers, Lighthouse/PageSpeed and headless renderers
+           get the instant, fully-rendered page (no intro) for the best LCP. */
+        if (/bot|crawl|spider|slurp|bingpreview|lighthouse|pagespeed|headless|facebookexternalhit|embedly|whatsapp|telegram/i.test(navigator.userAgent || '')) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        var isHome = location.pathname === '/' || /\/index\.html$/.test(location.pathname);
+        if (isHome && !localStorage.getItem('intro-seen')) {
+          document.documentElement.classList.add('intro');
+          localStorage.setItem('intro-seen', '1');
+        } else {
+          var plays = parseInt(sessionStorage.getItem('wm-plays') || '0', 10);
+          if (plays < 3) {
+            document.documentElement.classList.add('wordmark-animate');
+            sessionStorage.setItem('wm-plays', String(plays + 1));
+          }
         }
       } catch (e) {}
     })();

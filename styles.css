@@ -466,7 +466,7 @@ img {
 @media (prefers-reduced-motion: no-preference) {
   .wordmark-animate .top-nav .site-wordmark-strike::after {
     clip-path: inset(0 100% 0 0);
-    animation: wm-strike 0.72s 0.4s cubic-bezier(0.55, 0.06, 0.27, 1) forwards;
+    animation: wm-strike 0.62s 0.4s cubic-bezier(0.55, 0.06, 0.27, 1) forwards;
   }
 
   /* The insertion caret flicks in just before "SCAM" is written. */
@@ -474,7 +474,7 @@ img {
     opacity: 0;
     transform: scale(0.4);
     transform-origin: 60% 100%;
-    animation: wm-caret 0.2s 1.28s cubic-bezier(0.34, 0.8, 0.3, 1) forwards;
+    animation: wm-caret 0.2s 1.2s cubic-bezier(0.34, 0.8, 0.3, 1) forwards;
   }
 
   /* Each letter is a single-stroke path drawn tip-to-tail with stroke-dashoffset,
@@ -482,12 +482,12 @@ img {
   .wordmark-animate .top-nav .wm-hand path {
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
-    animation: wm-draw 0.42s linear forwards;
+    animation: wm-draw 0.34s linear forwards;
   }
-  .wordmark-animate .top-nav .wm-hand path:nth-child(1) { animation-delay: 1.4s; }
-  .wordmark-animate .top-nav .wm-hand path:nth-child(2) { animation-delay: 1.9s; }
-  .wordmark-animate .top-nav .wm-hand path:nth-child(3) { animation-delay: 2.4s; }
-  .wordmark-animate .top-nav .wm-hand path:nth-child(4) { animation-delay: 2.9s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(1) { animation-delay: 1.35s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(2) { animation-delay: 1.75s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(3) { animation-delay: 2.15s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(4) { animation-delay: 2.55s; }
 }
 
 @keyframes wm-strike {
@@ -506,6 +506,74 @@ img {
 @keyframes wm-draw {
   to {
     stroke-dashoffset: 0;
+  }
+}
+
+/* ── First-visit hero intro (homepage only) ──
+   The head script adds .intro before first paint on a visitor's first ever
+   homepage load (never for reduced-motion or no-JS). The headline builds line
+   by line, then the logo draws. Everything is opacity/transform only — space
+   is reserved, so there's no layout shift, and the accent line (the LCP
+   candidate) is fully painted in well under ~1.5s. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Lines 1 + 2 ("It's Not a Storage Unit.") arrive together and hold long
+     enough to read, then "It's a Trap." drops in as the punchline. */
+  .intro .hero-megatitle-line {
+    opacity: 0;
+  }
+  .intro .hero-megatitle-line:nth-child(1),
+  .intro .hero-megatitle-line:nth-child(2) {
+    animation: hero-rise 0.5s 0.15s ease-out forwards;
+  }
+  .intro .hero-megatitle-line:nth-child(3) {
+    transform-origin: left center;
+    animation: hero-stamp 0.42s 1.3s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+  }
+
+  /* The logo draws once "It's a Trap." has landed. */
+  .intro .top-nav .site-wordmark-strike::after {
+    clip-path: inset(0 100% 0 0);
+    animation: wm-strike 0.62s 2s cubic-bezier(0.55, 0.06, 0.27, 1) forwards;
+  }
+  .intro .top-nav .site-wordmark-ins::before {
+    opacity: 0;
+    transform: scale(0.4);
+    transform-origin: 60% 100%;
+    animation: wm-caret 0.2s 2.55s cubic-bezier(0.34, 0.8, 0.3, 1) forwards;
+  }
+  .intro .top-nav .wm-hand path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: wm-draw 0.34s linear forwards;
+  }
+  .intro .top-nav .wm-hand path:nth-child(1) { animation-delay: 2.7s; }
+  .intro .top-nav .wm-hand path:nth-child(2) { animation-delay: 3.1s; }
+  .intro .top-nav .wm-hand path:nth-child(3) { animation-delay: 3.5s; }
+  .intro .top-nav .wm-hand path:nth-child(4) { animation-delay: 3.9s; }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.28em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
