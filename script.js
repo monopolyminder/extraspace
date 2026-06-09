@@ -117,56 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
     sectionLinkMap.forEach((links, section) => spy.observe(section));
   }
 
-  const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
-
-  toggle.addEventListener('click', () => {
-    links.classList.toggle('open');
-  });
-
-  links.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => links.classList.remove('open'));
-  });
-
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
-
-  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
-    const btn = dropdown.querySelector('.nav-dropdown-toggle');
-    if (!btn) return;
-
-    btn.addEventListener('click', e => {
-      e.stopPropagation();
-      const isOpen = dropdown.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen);
-
-      document.querySelectorAll('.nav-dropdown').forEach(other => {
-        if (other !== dropdown) {
-          other.classList.remove('open');
-          other.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-
-    dropdown.addEventListener('mouseenter', () => {
-      if (!finePointer.matches) return;
-      dropdown.classList.add('open');
-      btn.setAttribute('aria-expanded', 'true');
-    });
-
-    dropdown.addEventListener('mouseleave', () => {
-      if (!finePointer.matches) return;
-      dropdown.classList.remove('open');
-      btn.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  document.addEventListener('click', e => {
-    if (e.target.closest('.nav-dropdown')) return;
-    document.querySelectorAll('.nav-dropdown.open').forEach(dropdown => {
-      dropdown.classList.remove('open');
-      dropdown.querySelector('.nav-dropdown-toggle')?.setAttribute('aria-expanded', 'false');
-    });
-  });
+  // The top-nav is fully CSS-only now: a checkbox-hack hamburger drives the
+  // mobile menu, and the "How It Works" flyout opens on :hover / :focus-within.
+  // Both work identically with or without JS, so there's no nav script.
 
   // "Earlier cases" expander: open by default on desktop, collapsed on narrow
   // viewports, while leaving the caret usable at any width.

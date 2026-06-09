@@ -59,11 +59,11 @@
         <ul class="nav-links" id="navLinks">
           <li><a href="index.html#lawsuits">Lawsuits</a></li>
           <li class="nav-dropdown">
-            <button type="button" class="nav-dropdown-toggle" aria-expanded="false" aria-controls="navHowItWorksMenu" id="navHowItWorksBtn">
+            <a href="how-it-works.html" class="nav-dropdown-toggle">
               How It Works
               <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8 9.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <ul class="nav-dropdown-menu" id="navHowItWorksMenu" role="menu" aria-labelledby="navHowItWorksBtn">
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
               <li role="none"><a role="menuitem" href="how-it-works.html#model">The Model</a></li>
               <li role="none"><a role="menuitem" href="how-it-works.html#algorithm">The Algorithm</a></li>
               <li role="none"><a role="menuitem" href="how-it-works.html#monopoly">The Monopoly</a></li>
@@ -73,9 +73,10 @@
           <li><a href="index.html#faq">FAQ</a></li>
           <li><a href="about.html" aria-current="page">About</a></li>
         </ul>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <input type="checkbox" id="navToggle" class="nav-toggle-cb">
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
           <span></span><span></span><span></span>
-        </button>
+        </label>
       </div>
     </div>
   </nav>

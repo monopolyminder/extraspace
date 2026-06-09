@@ -476,6 +476,7 @@ img {
   font-weight: 600;
   letter-spacing: 0.01em;
   color: var(--text);
+  text-decoration: none;
   background: none;
   border: none;
   padding: 0;
@@ -484,7 +485,7 @@ img {
 }
 
 .nav-dropdown-toggle:hover,
-.nav-dropdown.open .nav-dropdown-toggle,
+.nav-dropdown:focus-within .nav-dropdown-toggle,
 .nav-dropdown--current .nav-dropdown-toggle,
 .nav-dropdown-toggle[aria-current='page'] {
   color: var(--accent);
@@ -501,9 +502,16 @@ img {
   transition: transform 0.15s var(--ease);
 }
 
-.nav-dropdown.open .nav-dropdown-caret,
-.nav-dropdown:hover .nav-dropdown-caret {
-  transform: rotate(180deg);
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .nav-dropdown:hover .nav-dropdown-caret {
+    transform: rotate(180deg);
+  }
+}
+
+@media (min-width: 641px) {
+  .nav-dropdown:focus-within .nav-dropdown-caret {
+    transform: rotate(180deg);
+  }
 }
 
 .nav-dropdown-menu {
@@ -532,15 +540,18 @@ img {
   height: 10px;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .nav-dropdown:hover .nav-dropdown-menu,
-  .nav-dropdown.open .nav-dropdown-menu {
+/* Desktop flyout: reveal on hover (mouse) or focus-within (keyboard). Pure CSS,
+   no JS. On mobile the submenu is shown inline instead — see the max-width block. */
+@media (min-width: 641px) {
+  .nav-dropdown:focus-within .nav-dropdown-menu {
     display: block;
   }
 }
 
-.nav-dropdown.open .nav-dropdown-menu {
-  display: block;
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+  }
 }
 
 .nav-dropdown-menu a {
@@ -620,6 +631,16 @@ img {
   display: none;
 }
 
+/* Hidden checkbox that drives the mobile menu without JS (paired with the
+   .nav-toggle <label>). */
+.nav-toggle-cb {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -635,6 +656,11 @@ img {
   width: 24px;
   height: 2px;
   background: var(--text);
+}
+
+.nav-toggle-cb:focus-visible + .nav-toggle {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 /* ─── SUBPAGE HEADER ─── */
@@ -2132,12 +2158,14 @@ img {
     right: 0;
     background: var(--section-bg);
     flex-direction: column;
+    align-items: flex-start;
     padding: 20px 22px;
-    gap: 14px;
+    gap: 16px;
     border-bottom: 1px solid var(--hairline);
   }
 
-  .nav-links.open {
+  /* Checkbox-hack: the <label class="nav-toggle"> flips this checkbox, no JS. */
+  .nav-right:has(.nav-toggle-cb:checked) .nav-links {
     display: flex;
   }
 
@@ -2145,12 +2173,20 @@ img {
     width: 100%;
   }
 
+  /* No tap-toggle on mobile, so the caret would be misleading — hide it. */
+  .nav-dropdown-caret {
+    display: none;
+  }
+
+  /* Submenu sits inline under "How It Works" while the menu is open. */
   .nav-dropdown-menu {
     position: static;
-    display: none;
+    display: flex;
+    flex-direction: column;
     min-width: 0;
-    margin-top: 8px;
-    padding: 4px 0 4px 12px;
+    gap: 14px;
+    margin: 14px 0 2px;
+    padding: 2px 0 2px 14px;
     background: transparent;
     border: none;
     border-left: 2px solid var(--hairline);
@@ -2158,16 +2194,9 @@ img {
     box-shadow: none;
   }
 
-  .nav-dropdown.open .nav-dropdown-menu {
-    display: block;
-  }
-
-  .nav-dropdown:hover .nav-dropdown-menu {
-    display: none;
-  }
-
-  .nav-dropdown.open:hover .nav-dropdown-menu {
-    display: block;
+  .nav-dropdown-menu a {
+    padding: 0;
+    white-space: normal;
   }
 
   .nav-toggle {
@@ -2327,78 +2356,3 @@ img {
   outline-offset: 2px;
 }
 
-/* Without JS the hamburger can't open the menu, so lay the links out inline. */
-@media (max-width: 640px) {
-  .no-js .top-nav {
-    position: relative;
-  }
-
-  .no-js .nav-inner {
-    flex-wrap: wrap;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .no-js .nav-toggle {
-    display: none;
-  }
-
-  .no-js .nav-right {
-    width: 100%;
-  }
-
-  .no-js .nav-links {
-    display: flex;
-    position: static;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-    margin-top: 12px;
-    padding: 0;
-    background: transparent;
-    border: none;
-  }
-
-  .no-js .nav-dropdown {
-    width: 100%;
-  }
-
-  /* The toggle does nothing without JS, so present it as a plain group label. */
-  .no-js .nav-dropdown-toggle {
-    cursor: default;
-  }
-
-  .no-js .nav-dropdown-caret {
-    display: none;
-  }
-
-  .no-js .nav-dropdown-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    min-width: 0;
-    margin: 12px 0 0;
-    padding: 2px 0 2px 14px;
-    background: transparent;
-    border: none;
-    border-left: 2px solid var(--hairline);
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .no-js .nav-dropdown-menu a {
-    padding: 0;
-    white-space: normal;
-  }
-
-  /* The base mobile rules collapse the submenu on hover (for the JS menu);
-     in the no-JS build the submenu is always shown, so keep it visible. */
-  .no-js .nav-dropdown:hover .nav-dropdown-menu {
-    display: flex;
-  }
-
-  .no-js .hero,
-  .no-js .page-head {
-    padding-top: 28px;
-  }
-}
