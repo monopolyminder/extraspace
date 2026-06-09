@@ -15,16 +15,17 @@
 
 /*
   Self-hosted, latin-subset web fonts (served from this origin via the same CDN
-  as the rest of the site). font-display: optional means the browser uses the
-  matched fallback below if a font isn't ready almost immediately, and never
-  swaps mid-view — so there is no "pop". Preload hints in the HTML <head> get
-  the critical faces ready before first paint on most connections.
+  as the rest of the site). font-display: swap shows text immediately in the
+  metric-matched fallback below and swaps in the real font as soon as it loads.
+  Because the fallback is sized to match, that swap causes no layout shift — and
+  the preload hints in the <head> make the real fonts available almost
+  immediately, so the swap is usually imperceptible.
 */
 @font-face {
   font-family: 'Bebas Neue';
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: swap;
   src: url('fonts/bebas-neue-latin-400.woff2') format('woff2');
 }
 
@@ -32,7 +33,7 @@
   font-family: 'DM Sans';
   font-style: normal;
   font-weight: 400 700;
-  font-display: optional;
+  font-display: swap;
   src: url('fonts/dm-sans-latin-var.woff2') format('woff2');
 }
 
@@ -40,7 +41,7 @@
   font-family: 'DM Sans';
   font-style: italic;
   font-weight: 400 700;
-  font-display: optional;
+  font-display: swap;
   src: url('fonts/dm-sans-latin-italic-var.woff2') format('woff2');
 }
 
@@ -48,7 +49,7 @@
   font-family: 'Kalam';
   font-style: normal;
   font-weight: 700;
-  font-display: optional;
+  font-display: swap;
   src: url('fonts/kalam-latin-700.woff2') format('woff2');
 }
 
