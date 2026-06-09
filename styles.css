@@ -2218,6 +2218,11 @@ img {
   display: none !important;
 }
 
+/* Without JS the facade just links to YouTube, so drop the play-button overlay. */
+.no-js .yt-facade-play-wrap {
+  display: none;
+}
+
 /* Follow the OS colour scheme when JS can't resolve [data-theme] — unless the
    visitor has explicitly picked "Light". */
 @media (prefers-color-scheme: dark) {
@@ -2365,6 +2370,12 @@ img {
   .no-js .nav-dropdown-menu a {
     padding: 0;
     white-space: normal;
+  }
+
+  /* The base mobile rules collapse the submenu on hover (for the JS menu);
+     in the no-JS build the submenu is always shown, so keep it visible. */
+  .no-js .nav-dropdown:hover .nav-dropdown-menu {
+    display: flex;
   }
 
   .no-js .hero,
