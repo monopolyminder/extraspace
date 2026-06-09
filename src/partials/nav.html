@@ -1,0 +1,32 @@
+<nav class="top-nav" id="topNav">
+    <div class="nav-inner">
+      <a href="{{logoHref}}" class="nav-logo" aria-label="ExtraSpaceScam — home">
+        <span class="site-wordmark" aria-hidden="true">
+          <span class="site-wordmark-heavy">Extra</span><span class="site-wordmark-heavy">Space</span><span class="site-wordmark-light site-wordmark-strike">Storage</span><span class="site-wordmark-ins"><span class="wm-fallback">Scam</span><svg class="wm-hand" viewBox="0 0 300 100" aria-hidden="true"><filter id="wmink" x="-15%" y="-25%" width="130%" height="150%"><feTurbulence type="fractalNoise" baseFrequency="0.13" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.6"/></filter><g filter="url(#wmink)"><path pathLength="1" d="M54,31 C52,18 34,15 25,22 C16,29 18,39 33,44 C48,49 56,56 52,68 C48,80 29,82 16,71"/><path pathLength="1" d="M130,29 C112,16 87,20 81,48 C76,71 98,82 128,71"/><path pathLength="1" d="M158,80 C164,55 175,33 187,18 C193,36 200,58 206,80 M166,58 C177,55 191,55 199,58"/><path pathLength="1" d="M232,80 C231,56 232,33 236,19 C244,40 252,56 259,66 C266,55 274,38 281,19 C284,40 283,58 281,80"/></g></svg></span>
+        </span>
+      </a>
+            <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="{{homePrefix}}#lawsuits">Lawsuits</a></li>
+          <li class="nav-dropdown{{hiwClass}}">
+            <a href="how-it-works.html" class="nav-dropdown-toggle"{{hiwAttr}}>
+              How It Works
+              <svg class="nav-dropdown-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 4.5 6 8 9.5 4.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <ul class="nav-dropdown-menu" role="menu">
+              <li role="none"><a role="menuitem" href="{{hiwPrefix}}#model">The Model</a></li>
+              <li role="none"><a role="menuitem" href="{{hiwPrefix}}#algorithm">The Algorithm</a></li>
+              <li role="none"><a role="menuitem" href="{{hiwPrefix}}#monopoly">The Monopoly</a></li>
+            </ul>
+          </li>
+          <li><a href="{{homePrefix}}#action">Take Action</a></li>
+          <li><a href="{{homePrefix}}#faq">FAQ</a></li>
+          <li><a href="about.html"{{aboutAttr}}>About</a></li>
+        </ul>
+        <input type="checkbox" id="navToggle" class="nav-toggle-cb">
+        <label class="nav-toggle" for="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </label>
+      </div>
+    </div>
+  </nav>

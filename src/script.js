@@ -1,4 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+/*
+  Deferred page behavior, shared by every page. Each concern lives in its own
+  init function; everything degrades gracefully when its markup is absent.
+  (The before-first-paint bootstrap — js/theme/intro classes — is in head.js.)
+*/
+
+/* Click-to-load YouTube facade: swap the static poster for the real iframe */
+function initVideoFacade() {
   document.querySelectorAll('.hero-video-poster').forEach(img => {
     img.addEventListener('error', function fallbackPoster() {
       img.removeEventListener('error', fallbackPoster);
@@ -36,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
       load();
     });
   });
+}
 
+/* Theme toggle button; follows the OS unless the visitor chose explicitly */
+function initThemeToggle() {
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
   const themeMedia = window.matchMedia('(prefers-color-scheme: dark)');
@@ -72,7 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (e) {}
     });
   }
+}
 
+/* Section-rail progress fill and the back-to-top button, both scroll-driven */
+function initScrollProgress() {
   const sectionRail = document.getElementById('sectionRail');
   const railFill = sectionRail?.querySelector('.rail-fill');
   const backToTop = document.getElementById('backToTop');
@@ -93,8 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (backToTop) {
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   }
+}
 
-  // Sync active state across the top-nav links and the vertical rail links
+/* Sync active state across the top-nav links and the vertical rail links */
+function initScrollSpy() {
   const sectionLinkMap = new Map();
   document.querySelectorAll('.nav-links a[href^="#"], .rail-link[href^="#"]').forEach(a => {
     const section = document.getElementById(a.getAttribute('href').slice(1));
@@ -102,48 +117,54 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!sectionLinkMap.has(section)) sectionLinkMap.set(section, []);
     sectionLinkMap.get(section).push(a);
   });
+  if (!sectionLinkMap.size) return;
 
-  if (sectionLinkMap.size) {
-    const spy = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          sectionLinkMap.forEach(links => links.forEach(l => l.classList.remove('active')));
-          sectionLinkMap.get(entry.target)?.forEach(l => l.classList.add('active'));
-        });
-      },
-      { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
-    );
-    sectionLinkMap.forEach((links, section) => spy.observe(section));
-  }
+  const spy = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        sectionLinkMap.forEach(links => links.forEach(l => l.classList.remove('active')));
+        sectionLinkMap.get(entry.target)?.forEach(l => l.classList.add('active'));
+      });
+    },
+    { rootMargin: '-45% 0px -50% 0px', threshold: 0 }
+  );
+  sectionLinkMap.forEach((links, section) => spy.observe(section));
+}
 
-  // The top-nav is fully CSS-only now: a checkbox-hack hamburger drives the
-  // mobile menu, and the "How It Works" flyout opens on :hover / :focus-within.
-  // Both work identically with or without JS, so there's no nav script.
+/* The top-nav itself is fully CSS-only: a checkbox-hack hamburger drives the
+   mobile menu, and the "How It Works" flyout opens on :hover / :focus-within.
+   Both work identically with or without JS, so there's no nav script. */
 
-  // "Earlier cases" expander: open by default on desktop, collapsed on narrow
-  // viewports, while leaving the caret usable at any width.
+/* "Earlier cases" expander: open by default on desktop, collapsed on narrow
+   viewports, while leaving the caret usable at any width. */
+function initCaseExpander() {
   const caseExpander = document.querySelector('.case-collapse');
-  if (caseExpander) {
-    const wideView = window.matchMedia('(min-width: 901px)');
-    let userToggled = false;
-    let syncing = false;
+  if (!caseExpander) return;
 
-    const syncExpander = () => {
-      if (userToggled) return;
-      syncing = true;
-      caseExpander.open = wideView.matches;
-      syncing = false;
-    };
+  const wideView = window.matchMedia('(min-width: 901px)');
+  let userToggled = false;
+  let syncing = false;
 
-    caseExpander.addEventListener('toggle', () => {
-      if (!syncing) userToggled = true;
-    });
+  const syncExpander = () => {
+    if (userToggled) return;
+    syncing = true;
+    caseExpander.open = wideView.matches;
+    syncing = false;
+  };
 
-    syncExpander();
-    wideView.addEventListener('change', syncExpander);
-  }
+  caseExpander.addEventListener('toggle', () => {
+    if (!syncing) userToggled = true;
+  });
 
+  syncExpander();
+  wideView.addEventListener('change', syncExpander);
+}
+
+/* Fade cards in as they scroll into view. Only elements that start below the
+   fold are animated — anything already on screen at load stays fully visible,
+   so it never blinks out and fades back in. */
+function initScrollReveal() {
   const fadeTargets = document.querySelectorAll(
     '.step-card, .faq-item, .info-block, .algo-detail, .stat-card, .timeline-item, ' +
     '.monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card, .response-card, .response-rebuttal'
@@ -161,8 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
-  // Only animate elements that start below the fold. Anything already on screen
-  // at load stays fully visible, so it never blinks out and fades back in.
   const viewportH = window.innerHeight;
   fadeTargets.forEach(el => {
     const rect = el.getBoundingClientRect();
@@ -171,4 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
     el.classList.add('fade-in');
     observer.observe(el);
   });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initVideoFacade();
+  initThemeToggle();
+  initScrollProgress();
+  initScrollSpy();
+  initCaseExpander();
+  initScrollReveal();
 });
