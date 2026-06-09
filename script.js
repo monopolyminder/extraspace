@@ -31,7 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
       host.appendChild(iframe);
     };
 
-    trigger.addEventListener('click', load);
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      load();
+    });
   });
 
   const root = document.documentElement;
@@ -165,12 +168,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // "Earlier cases" expander: open by default on desktop, collapsed on narrow
+  // viewports, while leaving the caret usable at any width.
+  const caseExpander = document.querySelector('.case-collapse');
+  if (caseExpander) {
+    const wideView = window.matchMedia('(min-width: 901px)');
+    let userToggled = false;
+    let syncing = false;
+
+    const syncExpander = () => {
+      if (userToggled) return;
+      syncing = true;
+      caseExpander.open = wideView.matches;
+      syncing = false;
+    };
+
+    caseExpander.addEventListener('toggle', () => {
+      if (!syncing) userToggled = true;
+    });
+
+    syncExpander();
+    wideView.addEventListener('change', syncExpander);
+  }
+
   const fadeTargets = document.querySelectorAll(
     '.step-card, .faq-item, .info-block, .algo-detail, .stat-card, .timeline-item, ' +
     '.monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card, .response-card, .response-rebuttal'
   );
-
-  fadeTargets.forEach(el => el.classList.add('fade-in'));
 
   const observer = new IntersectionObserver(
     entries => {
@@ -184,5 +208,14 @@ document.addEventListener('DOMContentLoaded', () => {
     { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
   );
 
-  fadeTargets.forEach(el => observer.observe(el));
+  // Only animate elements that start below the fold. Anything already on screen
+  // at load stays fully visible, so it never blinks out and fades back in.
+  const viewportH = window.innerHeight;
+  fadeTargets.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < viewportH && rect.bottom > 0;
+    if (alreadyVisible) return;
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
 });

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#7ab800">
   <meta name="msapplication-TileColor" content="#7ab800">
   <script>
+    /* Flag JS availability so CSS can serve no-JS fallbacks */
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
     /* Resolve theme before first paint: stored choice, else OS preference */
     (function () {
       try {
@@ -33,19 +36,12 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://extraspacescam.com/">
   <title>Extra Space Scam - Consumer Awareness | ExtraSpaceScam.com</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://www.google.com">
   <link rel="dns-prefetch" href="https://i.ytimg.com">
-  <link
-    rel="preload"
-    as="style"
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Kalam:wght@700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;display=swap"
-    onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Kalam:wght@700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&amp;display=swap">
-  </noscript>
+  <link rel="preload" href="fonts/dm-sans-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/kalam-latin-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
   <script type="application/ld+json">
@@ -190,10 +186,12 @@
       <div class="hero-layout">
         <div class="hero-media">
           <div class="hero-video-frame" id="heroVideoHost">
-            <button
-              type="button"
+            <a
               class="hero-video-facade js-yt-facade"
               id="heroVideoTrigger"
+              href="https://www.youtube.com/watch?v=ZHKLErRY-Zo"
+              target="_blank"
+              rel="noopener"
               data-yt-id="ZHKLErRY-Zo"
               aria-label="Play video: overview of Extra Space Storage and consumer complaints"
             >
@@ -234,7 +232,7 @@
                   </span>
                 </div>
               </div>
-            </button>
+            </a>
           </div>
         </div>
         <div class="hero-copy">
@@ -286,9 +284,10 @@
         <a href="https://www.nyc.gov/site/dca/news/016-26/dcwp-sues-extra-space-bait-and-switch-pricing-vermin-infested-units-junk-fees-other" class="source-link" target="_blank" rel="noopener">Source: NYC.gov Official Press Release &rarr;</a>
       </div>
 
-      <h3 class="cases-subhead">Earlier cases</h3>
+      <details class="case-collapse" open>
+        <summary class="cases-subhead">Earlier cases</summary>
 
-      <div class="cases-grid cases-grid--archive">
+        <div class="cases-grid cases-grid--archive">
         <div class="case-card case-card--outcome">
           <div class="case-badge">$5.08M Settlement</div>
           <h3>Gomes v. Extra Space Storage Inc.</h3>
@@ -322,11 +321,11 @@
           </ul>
           <a href="https://topclassactions.com/lawsuit-settlements/lawsuit-news/judge-stops-extra-space-storage-class-action-lawsuit/" class="source-link" target="_blank" rel="noopener">Source: Top Class Actions &rarr;</a>
         </div>
-      </div>
+        </div>
 
-      <div class="legal-note">
-        <h3>Why So Many Cases Never Reach a Verdict</h3>
-        <p>
+        <div class="legal-note">
+          <h3>Why So Many Cases Never Reach a Verdict</h3>
+          <p>
           A dismissal doesn't mean the company did nothing wrong. Extra Space's
           contracts push most disputes into private arbitration, where there is
           no public record, and that is what ended <em>Ionescu</em>. When a case
@@ -337,14 +336,15 @@
           multibillion-dollar company on their own, let alone refile after a
           setback. The $5 million <em>Gomes</em> settlement, the NYC lawsuit,
           and the pattern of online complaints point to a much larger problem.
-        </p>
-      </div>
+          </p>
+        </div>
+      </details>
 
       <div class="bbb-note">
-        <h3>1,492 Better Business Bureau Complaints</h3>
+        <h3>1,400+ Better Business Bureau Complaints</h3>
         <p>
           On top of the lawsuits, the Better Business Bureau has logged
-          <strong>1,492 complaints</strong> against Extra Space Storage in just
+          <strong>1,400+ complaints</strong> against Extra Space Storage in just
           the last three years. The same story comes up over and over: a low
           introductory rate, then sudden, massive increases with no real
           explanation.
@@ -722,6 +722,16 @@
     <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
   </button>
+
+  <fieldset class="theme-switch">
+    <legend class="theme-switch-legend">Color theme</legend>
+    <input type="radio" name="theme-pref" id="themeAuto" class="theme-switch-input" checked>
+    <label for="themeAuto" class="theme-switch-label">Auto</label>
+    <input type="radio" name="theme-pref" id="themeLight" class="theme-switch-input">
+    <label for="themeLight" class="theme-switch-label">Light</label>
+    <input type="radio" name="theme-pref" id="themeDark" class="theme-switch-input">
+    <label for="themeDark" class="theme-switch-label">Dark</label>
+  </fieldset>
 
   <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
