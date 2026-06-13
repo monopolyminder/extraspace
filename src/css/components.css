@@ -1,0 +1,1003 @@
+/*
+  components.css — content components: step cards, info blocks, stats,
+  timeline, case cards, take-action matrix, reveal/protect cards, FAQ
+  accordion, and response quotes. Loads after layout.css.
+*/
+
+/* ─── STEPS ─── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.step-card {
+  padding: 28px;
+}
+
+.step-num {
+  font-family: var(--font-megatype);
+  font-size: 3.2rem;
+  line-height: 1;
+  color: color-mix(in srgb, var(--band-accent-strong) 72%, transparent);
+  opacity: 0.35;
+  margin-bottom: 8px;
+}
+
+.step-card h3 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.step-card p {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.68;
+}
+
+/* ─── TWO COL ─── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 44px;
+}
+
+.info-block {
+  padding: 28px;
+}
+
+.info-block h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.section-aside {
+  margin: 36px 0 0;
+  padding: 24px 28px;
+}
+
+.section-aside h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.section-aside p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+.claim-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.claim-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  line-height: 1.58;
+  color: var(--text-muted);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.85rem;
+  margin-top: 2px;
+  border: 1px solid var(--hairline);
+}
+
+.icon-x {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.icon-check {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+
+.algo-detail {
+  padding: 28px;
+  border-left: 5px solid var(--band-accent-strong);
+}
+
+.algo-detail h3 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.algo-detail p {
+  color: var(--text-muted);
+  font-size: 0.93rem;
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+
+/* ─── STATS ─── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.stat-card {
+  padding: 24px 18px;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-megatype);
+  font-size: 2.4rem;
+  color: var(--band-accent-strong);
+  letter-spacing: 0.02em;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 36px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: color-mix(in srgb, var(--band-accent-strong) 42%, transparent);
+}
+
+.timeline-item {
+  position: relative;
+  padding: 0 0 26px 18px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 6px;
+  width: 11px;
+  height: 11px;
+  background: var(--band-accent-strong);
+  border: 2px solid var(--card-bg);
+  box-shadow: 0 0 0 1px var(--card-border);
+}
+
+.timeline-year {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--band-accent-strong);
+  margin-bottom: 4px;
+}
+
+.timeline-text {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.timeline-text strong {
+  color: var(--band-accent-strong);
+}
+
+.monopoly-note {
+  padding: 24px 28px;
+  border: 2px solid var(--danger);
+  background: var(--danger-soft);
+}
+
+.monopoly-note h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--danger);
+}
+
+.monopoly-note p {
+  font-size: 0.91rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.monopoly-note p + p {
+  margin-top: 12px;
+}
+
+/* ─── CASES ─── */
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.cases-grid--archive {
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 36px;
+}
+
+.cases-subhead {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.case-featured {
+  margin-bottom: 40px;
+  padding: 32px 32px 30px;
+  border-left: 5px solid var(--green);
+  box-shadow: var(--card-shadow);
+}
+
+.case-featured h3 {
+  font-size: 1.28rem;
+}
+
+.case-featured .case-court {
+  font-size: 0.84rem;
+  margin-bottom: 18px;
+}
+
+.case-highlights {
+  display: grid;
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.case-highlight {
+  position: relative;
+  margin: 0;
+  padding: 14px 18px 14px 34px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--text);
+  background: var(--card-bg);
+}
+
+.case-highlight::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: calc(14px + 0.5em);
+  width: 7px;
+  height: 7px;
+  background: var(--green);
+  transform: rotate(45deg);
+}
+
+.case-highlight strong {
+  font-weight: inherit;
+}
+
+.case-footnotes {
+  list-style: none;
+  padding: 14px 16px 10px;
+  margin-bottom: 20px;
+  background: color-mix(in srgb, var(--text-muted) 6%, var(--card-bg));
+  border: 1px dashed var(--hairline);
+  border-radius: 4px;
+}
+
+.case-footnotes li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 7px;
+}
+
+.case-footnotes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--band-accent-strong);
+}
+
+.case-badge--lead {
+  font-size: 0.68rem;
+  padding: 5px 12px;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.case-card--muted {
+  opacity: 0.82;
+  border-style: dashed;
+}
+
+.case-card--muted h3 {
+  font-size: 0.94rem;
+}
+
+.case-card--muted li {
+  font-size: 0.82rem;
+}
+
+.case-badge--muted {
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+  border-color: color-mix(in srgb, var(--text-muted) 28%, transparent);
+}
+
+.case-card {
+  padding: 28px;
+}
+
+.case-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  padding: 4px 10px;
+  margin-bottom: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+/* Take Action labels: directive kicker, not a legal-docket pill */
+.recourse-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.recourse-label::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.action-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* Chapter map variant: sits between the section intro and the main CTA */
+.chapter-matrix {
+  margin-bottom: 36px;
+}
+
+.action-cell {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.15s var(--ease),
+    box-shadow 0.15s var(--ease);
+}
+
+.action-cell:hover {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--hairline));
+  box-shadow:
+    0 1px 2px rgba(21, 25, 30, 0.05),
+    0 14px 34px rgba(21, 25, 30, 0.1);
+  color: inherit;
+}
+
+.action-cell p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.action-cell-link {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.case-card h3 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.case-court {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.case-card ul {
+  list-style: none;
+  margin-bottom: 14px;
+}
+
+.case-card li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin-bottom: 7px;
+}
+
+.case-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  background: var(--band-accent-strong);
+}
+
+.source-link {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: inherit;
+}
+
+.section-source {
+  margin-top: 28px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ─── BBB + legal context notes ─── */
+.bbb-note {
+  padding: 24px 28px;
+  border-left: 5px solid var(--band-accent-strong);
+}
+
+.legal-note {
+  padding: 24px 28px;
+  margin-bottom: 36px;
+}
+
+.bbb-note h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--band-accent-strong);
+}
+
+.legal-note h3 {
+  font-size: 1.05rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.bbb-note p,
+.legal-note p {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.bbb-note p + p {
+  margin-top: 12px;
+}
+
+/* Collapsible "Earlier cases" section: caret toggle at every width.
+   Default open on desktop / closed on mobile is set in script.js. */
+.case-collapse,
+.escalate-collapse {
+  margin-bottom: 36px;
+}
+
+.case-collapse > summary,
+.escalate-collapse > summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding-left: 24px;
+}
+
+.case-collapse > summary::-webkit-details-marker,
+.escalate-collapse > summary::-webkit-details-marker {
+  display: none;
+}
+
+.case-collapse > summary::before,
+.escalate-collapse > summary::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--band-accent-strong);
+  border-bottom: 2px solid var(--band-accent-strong);
+  transform: translateY(-50%) rotate(-45deg);
+  transition: transform 0.15s ease;
+}
+
+.case-collapse[open] > summary::before,
+.escalate-collapse[open] > summary::before {
+  transform: translateY(-65%) rotate(45deg);
+}
+
+.case-collapse > .legal-note,
+.escalate-collapse > .legal-note {
+  margin-bottom: 0;
+}
+
+.case-collapse:not([open]) > .cases-grid,
+.case-collapse:not([open]) > .legal-note,
+.escalate-collapse:not([open]) > .cases-grid,
+.escalate-collapse:not([open]) > .legal-note {
+  display: none;
+}
+
+.escalate-collapse > .cases-grid {
+  margin-top: 24px;
+}
+
+/* Deep-dive chapter map reuses the escalate-collapse chrome and stays
+   collapsed by default so the section keeps its footprint small */
+.chapter-collapse:not([open]) > .chapter-matrix {
+  display: none;
+}
+
+.chapter-collapse > .chapter-matrix {
+  margin-top: 24px;
+  margin-bottom: 0;
+}
+
+/* Escalation collapse: an inviting card-style row instead of a bare line */
+.escalate-collapse > summary {
+  padding: 20px 24px 20px 48px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  transition: border-color 0.15s ease;
+}
+
+.escalate-collapse > summary:hover {
+  border-color: var(--text-muted);
+}
+
+.escalate-collapse > summary::before {
+  left: 24px;
+}
+
+.escalate-title {
+  display: block;
+  font-weight: 800;
+  font-size: 1.02rem;
+  color: var(--text);
+  margin-bottom: 3px;
+}
+
+.escalate-sub {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ─── TAKE ACTION: guided complaint flow ─── */
+.prep-note {
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  border: 1px dashed var(--hairline);
+}
+
+.prep-note h3 {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.prep-note ul {
+  list-style: none;
+}
+
+.prep-note li {
+  position: relative;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.prep-note li:last-child {
+  margin-bottom: 0;
+}
+
+.prep-note li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 6px;
+  background: var(--band-accent-strong);
+}
+
+.complaint-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.complaint-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.complaint-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  margin-bottom: 22px;
+}
+
+.complaint-card .cta-btn {
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* Step 1 (state AG) is the single highest-impact action: green ring and the
+   step label rendered as a filled chip so it reads first. The card only gets
+   a subtle green tint in dark mode — on the light theme it stays white. */
+.complaint-card--featured {
+  border: 2px solid var(--green);
+}
+
+:root[data-theme='dark'] .complaint-card--featured {
+  background: color-mix(in srgb, var(--green) 7%, var(--card-bg));
+}
+
+.complaint-card--featured .recourse-label {
+  padding: 5px 12px;
+  background: var(--green);
+  color: var(--on-green);
+  border-radius: 999px;
+}
+
+.complaint-card--featured .recourse-label::before {
+  display: none;
+}
+
+#action .bbb-note {
+  margin-bottom: 36px;
+}
+
+/* Share-your-story banner: card strip between the complaint flow
+   and the escalation options */
+/* Language suggestion toast: injected by initLangSuggest() on English pages
+   for Spanish-language browsers with no stored preference */
+.lang-toast {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1095;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: min(620px, calc(100vw - 32px));
+  padding: 18px 22px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-top: 4px solid var(--green);
+  border-radius: 6px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+}
+
+.lang-toast-text {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.lang-toast-link {
+  flex-shrink: 0;
+  padding: 9px 16px;
+  background: var(--green);
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--on-green);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-toast-link:hover {
+  background: var(--ink);
+  color: var(--ttpf-white);
+}
+
+.lang-toast-dismiss {
+  flex-shrink: 0;
+  padding: 6px 9px;
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.lang-toast-dismiss:hover {
+  color: var(--text);
+}
+
+.story-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 26px 32px;
+  margin-bottom: 48px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+}
+
+.story-cta-text h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.story-cta-text p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.story-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ─── REVEAL ─── */
+.reveal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.reveal-card {
+  padding: 26px 26px 26px 24px;
+  border-left: 4px solid var(--band-accent-strong);
+}
+
+.reveal-card h3 {
+  font-size: 1.08rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.reveal-card p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.68;
+}
+
+.protect-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.protect-card {
+  padding: 26px;
+}
+
+.protect-card h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.protect-card ul {
+  list-style: none;
+}
+
+.protect-card li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.58;
+  margin-bottom: 8px;
+}
+
+.protect-card li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  background: var(--band-accent-strong);
+}
+
+/* ─── FAQ ─── */
+.faq-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+/* Audience group headers inside the FAQ list, matching the protect cards */
+.faq-group-label {
+  margin-top: 14px;
+}
+
+.faq-group-label:first-child {
+  margin-top: 0;
+}
+
+.faq-item {
+  padding: 0;
+}
+
+.faq-q {
+  list-style: none;
+  cursor: pointer;
+  padding: 20px 52px 20px 24px;
+  position: relative;
+  font-weight: 700;
+  font-size: 1.02rem;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.faq-q::-webkit-details-marker {
+  display: none;
+}
+
+.faq-q::after {
+  content: "+";
+  position: absolute;
+  top: 50%;
+  right: 22px;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--band-accent-strong);
+}
+
+.faq-item[open] .faq-q::after {
+  content: "\2013";
+}
+
+.faq-q:focus-visible {
+  outline: 3px solid var(--band-accent-strong);
+  outline-offset: -3px;
+}
+
+.faq-a {
+  padding: 0 24px 22px;
+}
+
+.faq-a p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.faq-a a {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ─── RESPONSE ─── */
+.response-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.response-card {
+  padding: 26px;
+}
+
+.response-card blockquote {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-bottom: 12px;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent);
+}
+
+.response-context {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.response-rebuttal {
+  padding: 24px 28px;
+}
+
+.response-rebuttal h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.response-rebuttal p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.68;
+}

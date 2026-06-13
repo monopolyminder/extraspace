@@ -1,0 +1,202 @@
+/*
+  Watchdog / investigative system built on semantic theme tokens that follow the
+  OS light/dark preference. Extra Space wasabi green is the single brand accent,
+  with a bold green hero + "Protect Yourself" bookend. Red is reserved for genuine
+  danger callouts. Paper cards with hairline borders and soft shadows.
+
+  The stylesheet is split into ordered modules; every page links them in this
+  cascade-significant order:
+    base.css       — reset, fonts, design tokens, light/dark themes, globals
+    chrome.css     — fixed chrome: top nav, wordmark, section rail, toggles
+    layout.css     — hero, page headers, video facade, CTAs, section bands
+    components.css — content components: steps, stats, cases, FAQ, etc.
+    footer.css     — site footer + scroll-reveal
+    responsive.css — breakpoints and no-JS fallbacks (must load last)
+*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  Self-hosted, latin-subset web fonts (served from this origin via the same CDN
+  as the rest of the site). font-display: swap shows text immediately in the
+  metric-matched fallback below and swaps in the real font as soon as it loads.
+  Because the fallback is sized to match, that swap causes no layout shift — and
+  the preload hints in the <head> make the real fonts available almost
+  immediately, so the swap is usually imperceptible.
+*/
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bebas-neue-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/dm-sans-latin-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/dm-sans-latin-italic-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Kalam';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/kalam-latin-700.woff2') format('woff2');
+}
+
+/*
+  Metric-matched fallback faces. Each is Arial re-scaled (via size-adjust and
+  ascent/descent overrides derived from the real font's own metrics) so it
+  occupies the exact same space as the web font. While the web font loads, text
+  renders in the matched fallback and then swaps in with no layout shift — you
+  get fast text and the brand fonts, without the "pop".
+*/
+@font-face {
+  font-family: 'DM Sans Fallback';
+  src: local('Arial');
+  size-adjust: 104.531%;
+  ascent-override: 94.900%;
+  descent-override: 29.656%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Bebas Neue Fallback';
+  src: local('Arial');
+  size-adjust: 76.716%;
+  ascent-override: 117.316%;
+  descent-override: 39.105%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Kalam Fallback';
+  src: local('Arial');
+  size-adjust: 97.577%;
+  ascent-override: 108.939%;
+  descent-override: 54.418%;
+  line-gap-override: 0%;
+}
+
+:root {
+  color-scheme: light dark;
+
+  /* Fixed brand palette (theme-independent) */
+  --green: #7ab800; /* Extra Space wasabi green (Pantone 376C) — brand fields */
+  --green-strong: #356b00; /* legible deep green on light */
+  --green-bright: #a6e22e; /* bright green on dark */
+  --alert: #c2161f; /* reserved strictly for genuine danger callouts */
+  --alert-soft: rgba(194, 22, 31, 0.1);
+  --pen-red: #f5232b; /* bright "red pen" ink — wordmark correction only */
+  --ink: #15191e; /* fixed dark — buttons, accent box */
+  --on-green: #15191e; /* text on green fields (both themes) */
+
+  /* Semantic theme tokens — LIGHT defaults */
+  --page-bg: #ffffff;
+  --section-bg: #ffffff;
+  --section-bg-alt: #f3f5ef;
+  --text: #15191e;
+  --text-muted: #51616e;
+  --card-bg: #ffffff;
+  --card-border: rgba(21, 25, 30, 0.12);
+  --card-shadow:
+    0 1px 2px rgba(21, 25, 30, 0.05),
+    0 10px 30px rgba(21, 25, 30, 0.07);
+  --hairline: rgba(21, 25, 30, 0.12);
+  --accent: var(--green-strong); /* labels, links, figures — adapts per theme */
+
+  /* Legacy aliases → semantic tokens (keeps component rules unchanged) */
+  --ttpf-white: #ffffff;
+  --danger: var(--alert);
+  --danger-soft: var(--alert-soft);
+  --accent-bright: var(--green-bright);
+
+  --font-megatype: 'Bebas Neue', 'Bebas Neue Fallback', Impact, sans-serif;
+  --font-body: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
+  --max-width: min(1180px, 100%);
+  --ease: ease;
+}
+
+/* ─── DARK THEME — set via [data-theme] (JS) or the no-JS "Dark" radio ─── */
+:root[data-theme='dark'],
+:root.no-js:has(#themeDark:checked) {
+  --page-bg: #0f1216;
+  --section-bg: #14181d;
+  --section-bg-alt: #1a1f25;
+  --text: #eef1f3;
+  --text-muted: #9aa6b0;
+  --card-bg: #1b212a;
+  --card-border: rgba(255, 255, 255, 0.12);
+  --card-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 16px 36px rgba(0, 0, 0, 0.5);
+  --hairline: rgba(255, 255, 255, 0.1);
+  --accent: var(--green-bright);
+}
+
+/* ─── Shared accent tokens (one accent, inherited for cohesive UI) ─── */
+.section {
+  --band-label: var(--accent);
+  --band-accent-strong: var(--accent);
+  --band-card-ring: var(--card-border);
+  --band-pop: var(--card-shadow);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+[id].section,
+header.hero {
+  scroll-margin-top: 28px;
+}
+
+body.ttpf-ui {
+  font-family: var(--font-body);
+  background: var(--page-bg);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.62;
+}
+
+a {
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition:
+    background-color 0.15s var(--ease),
+    color 0.15s var(--ease);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+img {
+  max-width: 100%;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}

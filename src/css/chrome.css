@@ -1,0 +1,646 @@
+/*
+  chrome.css — fixed page chrome shared by every page: section rail,
+  back-to-top, top nav + dropdown, the "ExtraSpaceScam" wordmark (with its
+  pen-correction animations), and the theme toggle. Loads after base.css.
+*/
+
+/* ─── Long-form navigation aids: vertical section rail ─── */
+.section-rail {
+  position: fixed;
+  top: 50%;
+  right: clamp(14px, 2vw, 26px);
+  transform: translateY(-50%);
+  height: clamp(220px, 38vh, 360px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 1080;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s var(--ease), visibility 0.3s var(--ease);
+}
+
+.section-rail.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* The track + animated progress fill run behind the dots */
+.section-rail::before,
+.rail-fill {
+  content: '';
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  right: 5px;
+  width: 2px;
+  border-radius: 2px;
+}
+
+.section-rail::before {
+  background: var(--hairline);
+}
+
+.rail-fill {
+  bottom: auto;
+  height: calc(100% - 12px);
+  background: var(--accent);
+  transform: scaleY(var(--rail-progress, 0));
+  transform-origin: top center;
+  will-change: transform;
+}
+
+.rail-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 3px 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rail-dot {
+  position: relative;
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--section-bg);
+  border: 2px solid var(--text-muted);
+  transition: transform 0.18s var(--ease), border-color 0.18s var(--ease),
+    background-color 0.18s var(--ease);
+}
+
+.rail-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  white-space: nowrap;
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--card-shadow);
+  opacity: 0;
+  transform: translateX(6px);
+  pointer-events: none;
+  transition: opacity 0.18s var(--ease), transform 0.18s var(--ease);
+}
+
+.rail-link:hover .rail-dot {
+  border-color: var(--accent);
+  transform: scale(1.15);
+}
+
+.rail-link:hover .rail-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.rail-link.active .rail-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.45);
+}
+
+.rail-link.active .rail-label {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.back-to-top {
+  position: fixed;
+  right: clamp(16px, 3vw, 28px);
+  bottom: clamp(16px, 3vw, 28px);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--green);
+  color: var(--on-green);
+  box-shadow: var(--card-shadow);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s var(--ease);
+  z-index: 1090;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ─── NAV: white bar, scrolls out of view; rail takes over ─── */
+.top-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--section-bg);
+  border-bottom: 1px solid var(--hairline);
+  overflow: visible;
+}
+
+.nav-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 62px;
+  overflow: visible;
+}
+
+.nav-logo {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: -0.035em;
+  color: var(--text);
+  text-decoration: none;
+  line-height: 1.1;
+}
+
+.site-wordmark {
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
+.site-wordmark-heavy {
+  font-weight: 700;
+}
+
+.site-wordmark-light {
+  font-weight: 400;
+}
+
+/* "Scam" written in like a teacher's correction, with an insertion caret */
+.site-wordmark-ins {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.42em;
+  font-family: 'Kalam', 'Kalam Fallback', 'Bradley Hand', cursive;
+  font-weight: 700;
+  font-size: 1.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.015em;
+  color: var(--pen-red);
+  transform: translateY(-0.16em) rotate(-4deg);
+  transform-origin: left bottom;
+}
+
+/* JS swaps the Kalam "Scam" for hand-drawn single-stroke lettering that can be
+   "written" with the pen. No-JS / Tor (which blocks SVG) keep the Kalam text. */
+.site-wordmark-ins .wm-hand {
+  display: none;
+}
+
+.js .site-wordmark-ins .wm-fallback {
+  display: none;
+}
+
+.js .site-wordmark-ins .wm-hand {
+  display: inline-block;
+  height: 0.92em;
+  width: auto;
+  overflow: visible;
+  vertical-align: -0.1em;
+  transform: skewX(-11deg);
+  transform-origin: center bottom;
+}
+
+.site-wordmark-ins .wm-hand path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 12.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-wordmark-ins::before {
+  content: '';
+  position: absolute;
+  left: -0.4em;
+  bottom: -0.04em;
+  width: 0.5em;
+  height: 0.42em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 12'%3E%3Cpath d='M1.5,11 C3.5,7 5,4 7,1.5 C9,4 10.5,7 12.5,11' fill='none' stroke='%23f5232b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Cross out "Storage": it's not really storage, it's a scam */
+.site-wordmark-strike {
+  position: relative;
+  color: var(--text-muted);
+}
+
+.site-wordmark-strike::after {
+  content: '';
+  position: absolute;
+  left: 0.04em;
+  right: 0.04em;
+  top: 50%;
+  height: 0.7em;
+  transform: translateY(calc(-50% + 0.07em)) rotate(-1deg);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 22' preserveAspectRatio='none'%3E%3Cfilter id='i' x='-15%25' y='-45%25' width='130%25' height='190%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='5' result='n'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='n' scale='2.2'/%3E%3C/filter%3E%3Cg filter='url(%23i)'%3E%3Cpath d='M2,13 C20,7 40,18 60,11 C80,5 100,17 118,9' fill='none' stroke='%23f5232b' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M3,11.5 C24,8 44,15 62,12 C82,8 101,14 117,11' fill='none' stroke='%23f5232b' stroke-width='2.4' stroke-linecap='round' opacity='0.45'/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
+  pointer-events: none;
+}
+
+/* ── Wordmark "pen correction" animation (nav logo only) ──
+   JS adds .wordmark-animate for the first few page views (see head script).
+   The slash drags across "Storage", the caret flicks in, then each letter of
+   "SCAM" is drawn stroke-by-stroke like a ballpoint. Reduced-motion users and
+   no-JS / Tor visitors get the static mark. */
+@media (prefers-reduced-motion: no-preference) {
+  .wordmark-animate .top-nav .site-wordmark-strike::after {
+    clip-path: inset(0 100% 0 0);
+    animation: wm-strike 0.62s 0.4s cubic-bezier(0.55, 0.06, 0.27, 1) forwards;
+  }
+
+  /* The insertion caret flicks in just before "SCAM" is written. */
+  .wordmark-animate .top-nav .site-wordmark-ins::before {
+    opacity: 0;
+    transform: scale(0.4);
+    transform-origin: 60% 100%;
+    animation: wm-caret 0.2s 1.2s cubic-bezier(0.34, 0.8, 0.3, 1) forwards;
+  }
+
+  /* Each letter is a single-stroke path drawn tip-to-tail with stroke-dashoffset,
+     one after the next, so the ink flows along the letterforms like a pen. */
+  .wordmark-animate .top-nav .wm-hand path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: wm-draw 0.34s linear forwards;
+  }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(1) { animation-delay: 1.35s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(2) { animation-delay: 1.75s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(3) { animation-delay: 2.15s; }
+  .wordmark-animate .top-nav .wm-hand path:nth-child(4) { animation-delay: 2.55s; }
+}
+
+@keyframes wm-strike {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes wm-caret {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes wm-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ── First-visit hero intro (homepage only) ──
+   The head script adds .intro before first paint on a visitor's first ever
+   homepage load (never for reduced-motion or no-JS). The headline builds line
+   by line, then the logo draws. Everything is opacity/transform only — space
+   is reserved, so there's no layout shift, and the accent line (the LCP
+   candidate) is fully painted in well under ~1.5s. */
+@media (prefers-reduced-motion: no-preference) {
+  /* Lines 1 + 2 ("It's Not a Storage Unit.") arrive together and hold long
+     enough to read, then "It's a Trap." drops in as the punchline. */
+  .intro .hero-megatitle-line {
+    opacity: 0;
+  }
+  .intro .hero-megatitle-line:nth-child(1),
+  .intro .hero-megatitle-line:nth-child(2) {
+    animation: hero-rise 0.5s 0.15s ease-out forwards;
+  }
+  .intro .hero-megatitle-line:nth-child(3) {
+    transform-origin: left center;
+    animation: hero-stamp 0.42s 1.3s cubic-bezier(0.2, 0.75, 0.3, 1) forwards;
+  }
+
+  /* The logo draws once "It's a Trap." has landed. */
+  .intro .top-nav .site-wordmark-strike::after {
+    clip-path: inset(0 100% 0 0);
+    animation: wm-strike 0.62s 2s cubic-bezier(0.55, 0.06, 0.27, 1) forwards;
+  }
+  .intro .top-nav .site-wordmark-ins::before {
+    opacity: 0;
+    transform: scale(0.4);
+    transform-origin: 60% 100%;
+    animation: wm-caret 0.2s 2.55s cubic-bezier(0.34, 0.8, 0.3, 1) forwards;
+  }
+  .intro .top-nav .wm-hand path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: wm-draw 0.34s linear forwards;
+  }
+  .intro .top-nav .wm-hand path:nth-child(1) { animation-delay: 2.7s; }
+  .intro .top-nav .wm-hand path:nth-child(2) { animation-delay: 3.1s; }
+  .intro .top-nav .wm-hand path:nth-child(3) { animation-delay: 3.5s; }
+  .intro .top-nav .wm-hand path:nth-child(4) { animation-delay: 3.9s; }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.28em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-stamp {
+  from {
+    opacity: 0;
+    transform: scale(1.18);
+  }
+  55% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.nav-logo:hover {
+  background: transparent;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: clamp(10px, 2vw, 26px);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+
+/* EN/ES language switch: globe pill at the end of the nav */
+.nav-lang a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1.5px solid var(--text);
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.nav-lang-ico {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.nav-lang a:hover {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--on-green);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.nav-links a.active,
+.nav-links a[aria-current='page'] {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.15s var(--ease);
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown:focus-within .nav-dropdown-toggle,
+.nav-dropdown--current .nav-dropdown-toggle,
+.nav-dropdown-toggle[aria-current='page'] {
+  color: var(--accent);
+}
+
+.nav-dropdown--current .nav-dropdown-toggle,
+.nav-dropdown-toggle[aria-current='page'] {
+  font-weight: 700;
+}
+
+.nav-dropdown-caret {
+  width: 10px;
+  height: 10px;
+  transition: transform 0.15s var(--ease);
+}
+
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .nav-dropdown:hover .nav-dropdown-caret {
+    transform: rotate(180deg);
+  }
+}
+
+@media (min-width: 641px) {
+  .nav-dropdown:focus-within .nav-dropdown-caret {
+    transform: rotate(180deg);
+  }
+}
+
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -16px;
+  min-width: 188px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 0 8px;
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  box-shadow: var(--card-shadow);
+  z-index: 1100;
+}
+
+/* Invisible bridge so the pointer can reach the menu without losing hover */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: 0;
+  height: 10px;
+}
+
+/* Desktop flyout: reveal on hover (mouse) or focus-within (keyboard). Pure CSS,
+   no JS. On mobile the submenu is shown inline instead — see the max-width block. */
+@media (min-width: 641px) {
+  .nav-dropdown:focus-within .nav-dropdown-menu {
+    display: block;
+  }
+}
+
+@media (min-width: 641px) and (hover: hover) and (pointer: fine) {
+  .nav-dropdown:hover .nav-dropdown-menu {
+    display: block;
+  }
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 9px 16px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s var(--ease),
+    color 0.15s var(--ease);
+}
+
+.nav-dropdown-menu a:hover {
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--accent);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 22px);
+  overflow: visible;
+}
+
+/* ─── THEME TOGGLE: floating control, bottom-left ─── */
+.theme-toggle {
+  position: fixed;
+  left: clamp(16px, 3vw, 28px);
+  bottom: clamp(16px, 3vw, 28px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  flex-shrink: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  box-shadow: var(--card-shadow);
+  color: var(--text);
+  cursor: pointer;
+  z-index: 1090;
+  transition:
+    color 0.15s var(--ease),
+    border-color 0.15s var(--ease);
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.theme-toggle .ico-sun {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .ico-sun {
+  display: block;
+}
+
+:root[data-theme='dark'] .theme-toggle .ico-moon {
+  display: none;
+}
+
+/* Hidden checkbox that drives the mobile menu without JS (paired with the
+   .nav-toggle <label>). */
+.nav-toggle-cb {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+}
+
+.nav-toggle-cb:focus-visible + .nav-toggle {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
