@@ -406,33 +406,6 @@
   letter-spacing: 0.01em;
 }
 
-/* EN/ES language switch: globe pill at the end of the nav */
-.nav-lang a {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 5px 12px;
-  border: 1.5px solid var(--text);
-  border-radius: 999px;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.nav-lang-ico {
-  width: 14px;
-  height: 14px;
-  flex-shrink: 0;
-}
-
-.nav-lang a:hover {
-  background: var(--green);
-  border-color: var(--green);
-  color: var(--on-green);
-}
-
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--accent);
@@ -561,11 +534,64 @@
   overflow: visible;
 }
 
-/* ─── THEME TOGGLE: floating control, bottom-left ─── */
-.theme-toggle {
+/* ─── CORNER CONTROLS: floating theme + language row, bottom-left ─── */
+.corner-controls {
   position: fixed;
   left: clamp(16px, 3vw, 28px);
   bottom: clamp(16px, 3vw, 28px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1090;
+}
+
+/* EN/ES language switch: circle to the right of the theme control, with the
+   globe as a faint watermark behind the label */
+.lang-switch {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  box-shadow: var(--card-shadow);
+  color: var(--text);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.15s var(--ease), border-color 0.15s var(--ease);
+}
+
+.lang-switch-ico {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 36px;
+  height: 36px;
+  z-index: -1;
+  opacity: 0.3;
+  stroke-width: 1.1;
+}
+
+.lang-switch:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  text-decoration: none;
+}
+
+.lang-switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;

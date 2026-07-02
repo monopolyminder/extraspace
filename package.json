@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "esbuild": "^0.28.0"
+  },
+  "dependencies": {
+    "turndown": "^7.2.4"
   }
 }

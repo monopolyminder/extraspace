@@ -218,12 +218,10 @@
 }
 
 /* No-JS, CSS-only theme control (Auto / Light / Dark). It does not persist
-   across reloads or navigation because that needs JS/storage. */
+   across reloads or navigation because that needs JS/storage. It sits in the
+   same .corner-controls row as the language circle. */
 .no-js .theme-switch {
   display: inline-flex !important;
-  position: fixed;
-  left: clamp(16px, 3vw, 28px);
-  bottom: clamp(16px, 3vw, 28px);
   align-items: stretch;
   min-inline-size: 0;
   margin: 0;
@@ -233,7 +231,6 @@
   border-radius: 999px;
   background: var(--card-bg);
   box-shadow: var(--card-shadow);
-  z-index: 1090;
 }
 
 .theme-switch-legend {

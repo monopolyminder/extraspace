@@ -7,6 +7,9 @@
     inlines it into each page's <head> (replacing the stylesheet link in the
     head-assets partial) so first paint needs no render-blocking CSS request.
   - Minifies head.js and script.js.
+  - Generates llms-full.txt from the English pages (the content between each
+    page's nav and footer includes, converted to Markdown), so it can never
+    drift from the site copy. llms.txt stays hand-curated in src/.
   - Copies all other static assets verbatim.
 
   Languages: English pages live in src/ and build to dist/; each extra
@@ -21,6 +24,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { transform } from 'esbuild';
+import TurndownService from 'turndown';
 
 const SRC = 'src';
 const DIST = 'dist';
@@ -42,10 +46,11 @@ const STATIC_ASSETS = [
   'fonts',
   'img',
   'favicon.svg',
+  'favicon.ico',
+  'apple-touch-icon.png',
   'og-image.png',
   'robots.txt',
   'llms.txt',
-  'llms-full.txt',
   'sitemap.xml',
   'CNAME',
   '.nojekyll',
@@ -108,6 +113,82 @@ async function renderPage(file, lang, css) {
   await writeFile(path.join(outDir, file), out);
 }
 
+/* ─── llms-full.txt: Markdown mirror of the English pages, generated from the
+   same source HTML so it can never drift from the site copy ─── */
+
+const LLMS_PAGES = [
+  { file: 'index.html', label: 'Overview (Home)', url: 'https://extraspacescam.com/' },
+  { file: 'how-it-works.html', label: 'How It Works', url: 'https://extraspacescam.com/how-it-works.html' },
+  { file: 'about.html', label: 'About', url: 'https://extraspacescam.com/about.html' },
+];
+
+const LLMS_DISCLAIMER =
+  '**Important disclaimer (applies to everything below):** This is an ' +
+  'independent consumer-advocacy resource, not affiliated with, endorsed by, ' +
+  'or sponsored by any company mentioned. All factual claims are based on ' +
+  'publicly available sources (court filings, government press releases, ' +
+  'academic publications, news reporting), and all sources are cited. The ' +
+  'lawsuits and complaints described contain allegations that have not been ' +
+  'proven in court; where a company resolved a case by settlement, it did so ' +
+  'without admitting liability. Characterizations such as "trap" and "scam" ' +
+  'are the authors\' opinions. This site does not provide legal advice.';
+
+const LLMS_CONTACT =
+  '## Contact\n' +
+  '- Reader stories: stories@extraspacescam.com\n' +
+  '- Corrections / accuracy disputes: editor@extraspacescam.com';
+
+const turndown = new TurndownService({
+  headingStyle: 'atx',
+  bulletListMarker: '-',
+  emDelimiter: '*',
+});
+turndown.remove(['script', 'style']);
+
+function pageMarkdown(source, pageUrl) {
+  const navEnd = source.indexOf('-->', source.indexOf('<!-- include nav')) + 3;
+  const footerStart = source.indexOf('<!-- include footer');
+  if (navEnd < 3 || footerStart === -1) {
+    throw new Error('llms-full: could not locate nav/footer includes');
+  }
+  const html = source
+    .slice(navEnd, footerStart)
+    /* The hero video facade is visual chrome; reduce it to a plain link */
+    .replace(
+      /<a\s+class="hero-video-facade[\s\S]*?href="([^"]+)"[\s\S]*?yt-facade-title">([^<]*)<[\s\S]*?<\/a>/g,
+      '<p><a href="$1">Hero video: $2</a></p>'
+    )
+    .replace(/<svg[\s\S]*?<\/svg>/g, '')
+    .replace(/<img[^>]*>/g, '')
+    /* Decorative kicker labels ("On the Record", …) read as stray words */
+    .replace(/<span class="section-label">[^<]*<\/span>/g, '')
+    /* Inline card/group labels run into the following text; make them blocks */
+    .replace(/<span class="recourse-label[^"]*">([^<]*)<\/span>/g, '<p>$1</p>')
+    /* Resolve links against the live site so the file stands alone */
+    .replace(/href="#/g, `href="${pageUrl}#`)
+    .replace(/href="\//g, 'href="https://extraspacescam.com/')
+    .replace(/href="(?!https?:|mailto:)/g, 'href="https://extraspacescam.com/');
+  return turndown.turndown(html).replace(/\n{3,}/g, '\n\n').trim();
+}
+
+async function buildLlmsFull() {
+  const updated = new Date().toLocaleString('en-US', { month: 'long', year: 'numeric' });
+  const header =
+    '# ExtraSpaceScam.com — Full Text\n\n' +
+    '> Independent consumer-awareness resource on Extra Space Storage ' +
+    `(NYSE: EXR). Full text of all pages as Markdown, generated from the live site. Last updated: ${updated}.\n\n` +
+    LLMS_DISCLAIMER;
+  const sections = await Promise.all(
+    LLMS_PAGES.map(async ({ file, label, url }) => {
+      const source = await readFile(path.join(SRC, file), 'utf8');
+      return `# Page: ${label} — ${url}\n\n${pageMarkdown(source, url)}`;
+    })
+  );
+  const footer = `${LLMS_CONTACT}\n\n© ${new Date().getFullYear()} ExtraSpaceScam.com. All rights reserved.`;
+  const text = [header, ...sections, footer].join('\n\n---\n\n') + '\n';
+  await writeFile(path.join(DIST, 'llms-full.txt'), text);
+}
+
 async function buildCss() {
   const parts = await Promise.all(
     CSS_ORDER.map(f => readFile(path.join(SRC, 'css', f), 'utf8'))
@@ -137,6 +218,7 @@ await Promise.all([
   ...LANGS.flatMap(lang => PAGES.map(file => renderPage(file, lang, css))),
   buildJs('head.js'),
   buildJs('script.js'),
+  buildLlmsFull(),
   copyStatic(),
 ]);
 console.log(`Built ${PAGES.length * LANGS.length} pages (${LANGS.join(', ')}) → ${DIST}/`);

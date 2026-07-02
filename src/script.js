@@ -195,8 +195,8 @@ function initLangSuggest() {
     } catch (e) {}
   };
 
-  /* The nav toggle records the explicit choice before navigating */
-  document.querySelectorAll('.nav-lang a[data-lang]').forEach(link => {
+  /* The corner language pill records the explicit choice before navigating */
+  document.querySelectorAll('.lang-switch[data-lang]').forEach(link => {
     link.addEventListener('click', () => storePref(link.dataset.lang));
   });
 
@@ -205,7 +205,7 @@ function initLangSuggest() {
   const languages = navigator.languages || [navigator.language];
   if (!languages.some(l => /^es(-|$)/i.test(l || ''))) return;
 
-  const esHref = document.querySelector('.nav-lang a[data-lang="es"]')?.getAttribute('href');
+  const esHref = document.querySelector('.lang-switch[data-lang="es"]')?.getAttribute('href');
   if (!esHref) return;
 
   const toast = document.createElement('div');

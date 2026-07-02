@@ -36,25 +36,29 @@
           </p>
         </div>
         <p>&copy; 2026 ExtraSpaceScam.com. All rights reserved.</p>
-        <p class="last-updated">Last updated: June 2026</p>
+        <p class="last-updated">Last updated: July 2026</p>
       </div>
     </div>
   </footer>
 
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
-    <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-  </button>
+  <div class="corner-controls">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch theme">
+      <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </button>
 
-  <fieldset class="theme-switch">
-    <legend class="theme-switch-legend">Color theme</legend>
-    <input type="radio" name="theme-pref" id="themeAuto" class="theme-switch-input" checked>
-    <label for="themeAuto" class="theme-switch-label">Auto</label>
-    <input type="radio" name="theme-pref" id="themeLight" class="theme-switch-input">
-    <label for="themeLight" class="theme-switch-label">Light</label>
-    <input type="radio" name="theme-pref" id="themeDark" class="theme-switch-input">
-    <label for="themeDark" class="theme-switch-label">Dark</label>
-  </fieldset>
+    <fieldset class="theme-switch">
+      <legend class="theme-switch-legend">Color theme</legend>
+      <input type="radio" name="theme-pref" id="themeAuto" class="theme-switch-input" checked>
+      <label for="themeAuto" class="theme-switch-label">Auto</label>
+      <input type="radio" name="theme-pref" id="themeLight" class="theme-switch-input">
+      <label for="themeLight" class="theme-switch-label">Light</label>
+      <input type="radio" name="theme-pref" id="themeDark" class="theme-switch-input">
+      <label for="themeDark" class="theme-switch-label">Dark</label>
+    </fieldset>
+
+    <a class="lang-switch" href="{{langHref}}" data-lang="es" lang="es" hreflang="es" title="Ver este sitio en español" aria-label="Ver este sitio en español"><svg class="lang-switch-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14.2 14.2 0 0 1 0 18M12 3a14.2 14.2 0 0 0 0 18"/></svg>ES</a>
+  </div>
 
   <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
