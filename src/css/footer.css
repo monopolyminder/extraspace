@@ -79,10 +79,27 @@
 .footer-bottom p {
   font-size: 0.75rem;
   color: var(--text-muted);
+  margin: 0;
+}
+
+.footer-bottom p + p {
+  margin-top: 6px;
+}
+
+.footer-sources {
+  margin-top: 10px;
+}
+
+.footer-sources a {
+  font-weight: 600;
 }
 
 .last-updated {
   margin-top: 6px;
+}
+
+.footer-license a {
+  font-weight: 600;
 }
 
 /* ─── SCROLL REVEAL (subtle, no shadows) ─── */

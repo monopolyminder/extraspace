@@ -218,6 +218,53 @@
   color: var(--band-accent-strong);
 }
 
+/* Story variant (About page): first-person narrative beats. Larger type than
+   the compact acquisition timeline, and emphasis stays in ink rather than
+   accent green so the highlights read as testimony, not data points. */
+.timeline--story {
+  max-width: 720px;
+  margin-bottom: 44px;
+}
+
+.timeline--story .timeline-item {
+  padding-bottom: 30px;
+}
+
+.timeline--story .timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline--story .timeline-year {
+  font-size: 0.78rem;
+  margin-bottom: 6px;
+}
+
+.timeline--story .timeline-text {
+  font-size: 0.99rem;
+  line-height: 1.72;
+}
+
+.timeline--story .timeline-text strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* "Why I Built This" conclusion card under the story timeline */
+.story-why {
+  max-width: 720px;
+  margin-bottom: 44px;
+}
+
+.story-why p {
+  color: var(--text-muted);
+  font-size: 0.97rem;
+  line-height: 1.72;
+}
+
+.story-why strong {
+  color: var(--text);
+}
+
 .monopoly-note {
   padding: 24px 28px;
   border: 2px solid var(--danger);
@@ -845,6 +892,23 @@
   font-size: 0.88rem;
   color: var(--text-muted);
   line-height: 1.68;
+}
+
+.reveal-grid + .section-intro {
+  margin-top: 36px;
+  margin-bottom: 0;
+}
+
+#story .section-intro:last-child {
+  margin-bottom: 11px;
+}
+
+#story {
+  padding-bottom: clamp(46px, 5.5vw, 64px);
+}
+
+#story + .section {
+  padding-top: clamp(50px, 6vw, 70px);
 }
 
 .protect-grid {

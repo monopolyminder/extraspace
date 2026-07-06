@@ -24,13 +24,15 @@
 import { cp, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { transform } from 'esbuild';
+import pngToIco from 'png-to-ico';
+import sharp from 'sharp';
 import TurndownService from 'turndown';
 
 const SRC = 'src';
 const DIST = 'dist';
 
 const LANGS = ['en', 'es']; /* 'en' is the root/default language */
-const PAGES = ['index.html', 'about.html', 'how-it-works.html'];
+const PAGES = ['index.html', 'about.html', 'how-it-works.html', 'sources.html'];
 
 /* Cascade-significant order — must match the documented order in base.css */
 const CSS_ORDER = [
@@ -46,8 +48,6 @@ const STATIC_ASSETS = [
   'fonts',
   'img',
   'favicon.svg',
-  'favicon.ico',
-  'apple-touch-icon.png',
   'og-image.png',
   'robots.txt',
   'llms.txt',
@@ -120,6 +120,7 @@ const LLMS_PAGES = [
   { file: 'index.html', label: 'Overview (Home)', url: 'https://extraspacescam.com/' },
   { file: 'how-it-works.html', label: 'How It Works', url: 'https://extraspacescam.com/how-it-works.html' },
   { file: 'about.html', label: 'About', url: 'https://extraspacescam.com/about.html' },
+  { file: 'sources.html', label: 'Sources & Standards', url: 'https://extraspacescam.com/sources.html' },
 ];
 
 const LLMS_DISCLAIMER =
@@ -211,6 +212,25 @@ async function copyStatic() {
   );
 }
 
+/* Rasterize favicon.svg → transparent .ico and apple-touch-icon.png.
+   Safari ignores SVG favicons; the old .ico had an opaque white matte. */
+async function buildFavicons() {
+  const svg = await readFile(path.join(SRC, 'favicon.svg'));
+  const pngs = await Promise.all(
+    [16, 32, 48].map(size =>
+      sharp(svg, { density: 288 }).resize(size, size).png().toBuffer()
+    )
+  );
+  const ico = await pngToIco(pngs);
+  const apple = await sharp(svg, { density: 288 }).resize(180, 180).png().toBuffer();
+  await Promise.all([
+    writeFile(path.join(SRC, 'favicon.ico'), ico),
+    writeFile(path.join(SRC, 'apple-touch-icon.png'), apple),
+    writeFile(path.join(DIST, 'favicon.ico'), ico),
+    writeFile(path.join(DIST, 'apple-touch-icon.png'), apple),
+  ]);
+}
+
 await rm(DIST, { recursive: true, force: true });
 await mkdir(DIST, { recursive: true });
 const css = await buildCss();
@@ -219,6 +239,7 @@ await Promise.all([
   buildJs('head.js'),
   buildJs('script.js'),
   buildLlmsFull(),
+  buildFavicons(),
   copyStatic(),
 ]);
 console.log(`Built ${PAGES.length * LANGS.length} pages (${LANGS.join(', ')}) → ${DIST}/`);
