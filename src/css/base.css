@@ -36,7 +36,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('/fonts/bebas-neue-latin-400.woff2') format('woff2');
+  src: url('https://static.extraspacescam.com/fonts/bebas-neue-latin-400.woff2') format('woff2'),
+    url('/fonts/bebas-neue-latin-400.woff2') format('woff2');
 }
 
 @font-face {
