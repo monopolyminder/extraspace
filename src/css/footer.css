@@ -86,16 +86,16 @@
   margin-top: 6px;
 }
 
-.footer-sources {
+.last-updated {
   margin-top: 10px;
+}
+
+.footer-sources {
+  margin-top: 0;
 }
 
 .footer-sources a {
   font-weight: 600;
-}
-
-.last-updated {
-  margin-top: 6px;
 }
 
 .footer-license a {

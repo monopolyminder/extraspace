@@ -9,7 +9,7 @@ Key context for summarizers:
 
 ## Pages
 - [Overview / Home](https://extraspacescam.com/): The core argument, the active NYC lawsuit and earlier cases (Gomes, Ionescu, Curtis), the 1,400+ BBB complaints, what customers aren't told, an FAQ, and a step-by-step "Take Action" recourse toolkit.
-- [How It Works](https://extraspacescam.com/how-it-works.html): A deep dive on the business model — the bait-and-switch playbook (4 steps), the "Adaptive Dynamic Pricing" (DPDM) algorithm, the acquisition/monopoly timeline, and Extra Space's own public statements with rebuttal.
+- [How It Works](https://extraspacescam.com/how-it-works.html): A deep dive on the business model in four chapters — the bait-and-switch playbook (4 steps), the pricing algorithm (from the 2009 DPDM paper to the CEO's 2026 description of nightly repricing across 2.8 million units), the acquisition/monopoly timeline, and "The Platform Behind the Sign" (how ManagementPlus turns 1,856 independently owned stores into stores priced by the same system, with DOJ v. RealPage cited as regulatory context) — plus Extra Space's own public statements with rebuttal.
 - [About](https://extraspacescam.com/about.html): Why the site exists, the customer's story, and how readers can act or submit their own.
 - [Sources & Standards](https://extraspacescam.com/sources.html): Primary source list and editorial rules for how factual claims are verified and cited.
 
@@ -27,6 +27,10 @@ The full site is also available in Spanish at https://extraspacescam.com/es/ ([I
 - [Curtis v. Extra Space Storage — class certification denied (Top Class Actions)](https://topclassactions.com/lawsuit-settlements/lawsuit-news/judge-stops-extra-space-storage-class-action-lawsuit/)
 - [Chen & Sondhi, "Revenue Management at Extra Space Storage LLC," Int'l Journal of Revenue Management (2009)](https://ecommons.udayton.edu/mis_fac_pub/20/)
 - [Better Business Bureau complaint profile](https://www.bbb.org/us/ut/cottonwood-heights/profile/storage-units/extra-space-management-inc-1166-4001764/complaints)
+- [Extra Space "Why ManagementPlus" third-party management page](https://www.extraspace.com/managementplus/why-managementplus/)
+- [Extra Space Q1 2026 earnings call transcript (nightly algorithmic pricing)](https://www.fool.com/earnings/call-transcripts/2026/04/30/extra-space-storage-exr-q1-2026-earnings-transcript/)
+- [Extra Space 2025 annual report & Form 10-K (SEC)](https://www.sec.gov/Archives/edgar/data/1289490/000128949026000031/q42025exrannualreport.pdf)
+- [DOJ, U.S. v. RealPage — algorithmic pricing case (regulatory context)](https://www.justice.gov/atr/case/us-and-plaintiff-states-v-realpage-inc)
 
 ## Contact
 - Reader stories: stories@extraspacescam.com

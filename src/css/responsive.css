@@ -57,6 +57,37 @@
   .protect-grid {
     grid-template-columns: 1fr;
   }
+
+  .chain-stage {
+    grid-template-columns: 42px 1fr;
+    gap: 18px;
+    padding-bottom: 38px;
+  }
+
+  .chain-stage::before {
+    left: 20px;
+    top: 46px;
+  }
+
+  .chain-marker {
+    width: 42px;
+    height: 42px;
+  }
+
+  .chain-marker span {
+    font-size: 1.15rem;
+  }
+
+  .chain-return {
+    margin-left: 20px;
+    padding-left: 22px;
+  }
+
+  .story-file,
+  .story-slot {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 @media (max-width: 640px) {

@@ -32,7 +32,9 @@ const SRC = 'src';
 const DIST = 'dist';
 
 const LANGS = ['en', 'es']; /* 'en' is the root/default language */
-const PAGES = ['index.html', 'about.html', 'how-it-works.html', 'sources.html'];
+/* stories.html is a quiet launch: built and linked from About, but noindex
+   and excluded from sitemap/nav/llms until the first story is published */
+const PAGES = ['index.html', 'about.html', 'how-it-works.html', 'sources.html', 'privacy.html', 'stories.html'];
 
 /* Cascade-significant order — must match the documented order in base.css */
 const CSS_ORDER = [

@@ -233,7 +233,8 @@ function initLangSuggest() {
 function initScrollReveal() {
   const fadeTargets = document.querySelectorAll(
     '.step-card, .faq-item, .info-block, .algo-detail, .stat-card, .timeline-item, ' +
-    '.monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card, .response-card, .response-rebuttal'
+    '.chain-stage, .monopoly-note, .case-card, .bbb-note, .reveal-card, .protect-card, ' +
+    '.response-card, .response-rebuttal, .story-file, .story-slot'
   );
 
   const observer = new IntersectionObserver(

@@ -75,6 +75,10 @@
   margin-bottom: 0;
 }
 
+.section-aside p + p {
+  margin-top: 12px;
+}
+
 .claim-list {
   list-style: none;
   display: flex;
@@ -120,6 +124,10 @@
   border-left: 5px solid var(--band-accent-strong);
 }
 
+* + .algo-detail {
+  margin-top: 44px;
+}
+
 .algo-detail h3 {
   font-size: 1.02rem;
   font-weight: 800;
@@ -132,6 +140,239 @@
   font-size: 0.93rem;
   line-height: 1.75;
   margin-bottom: 10px;
+}
+
+/* ─── STORY FILES (stories page) ───
+   Each published account reads like a numbered case file: a stamped file
+   label, title and byline rail, the first-person body, and topic tags.
+   The next empty file slot sits underneath, waiting for its story. */
+.story-file {
+  max-width: 860px;
+  padding: 36px 40px 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--band-card-ring);
+  border-radius: 4px;
+  box-shadow: var(--band-pop);
+}
+
+.story-file-head {
+  margin-bottom: 20px;
+}
+
+.story-file-id {
+  display: inline-block;
+  font-family: var(--font-megatype);
+  font-size: 1.05rem;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--band-accent-strong);
+  border: 2px solid var(--band-accent-strong);
+  padding: 6px 12px 4px;
+  margin-bottom: 14px;
+}
+
+.story-file-head h3 {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.story-file-byline {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.story-file-body {
+  max-width: 68ch;
+}
+
+.story-file-body p {
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.story-file-body p + p {
+  margin-top: 16px;
+}
+
+.story-file-body strong {
+  color: var(--text);
+}
+
+.story-file-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 26px;
+  padding-top: 18px;
+  border-top: 1px dashed var(--hairline);
+}
+
+.story-file-tag {
+  font-size: 0.66rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 5px 11px;
+  border: 1px solid var(--hairline);
+  color: var(--text-muted);
+}
+
+/* The next file in the drawer: same silhouette, dashed and waiting */
+.story-slot {
+  max-width: 860px;
+  margin-top: 24px;
+  margin-bottom: 44px;
+  padding: 30px 40px;
+  border: 2px dashed color-mix(in srgb, var(--band-accent-strong) 45%, transparent);
+  border-radius: 4px;
+}
+
+.story-slot-id {
+  color: var(--text-muted);
+  border-color: color-mix(in srgb, var(--text-muted) 55%, transparent);
+  border-style: dashed;
+  margin: 0 10px 0 0;
+  vertical-align: 2px;
+}
+
+.story-slot-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.story-slot-text {
+  max-width: 62ch;
+  font-size: 0.93rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.story-rules {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text-muted);
+  opacity: 0.85;
+}
+
+/* ─── PLATFORM CHAIN (how-it-works #platform) ───
+   One vertical sequence, not a card grid: numbered markers on a dashed
+   spine, each stage led by the company's own words, ending in a loop-back
+   note. Reads as a conveyor feeding the next owner into the machine. */
+.platform-chain {
+  max-width: 760px;
+}
+
+.chain-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 26px;
+  padding-bottom: 48px;
+}
+
+.chain-stage::before {
+  content: '';
+  position: absolute;
+  left: 27px;
+  top: 60px;
+  bottom: 4px;
+  border-left: 2px dashed color-mix(in srgb, var(--band-accent-strong) 55%, transparent);
+}
+
+.chain-marker {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--band-accent-strong);
+  background: var(--card-bg);
+  box-shadow: var(--band-pop);
+}
+
+.chain-marker span {
+  font-family: var(--font-megatype);
+  font-size: 1.5rem;
+  color: var(--band-accent-strong);
+}
+
+.chain-kicker {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--band-accent-strong);
+  margin: 4px 0 6px;
+}
+
+.chain-body h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.chain-quote {
+  font-size: 1.06rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text);
+  padding-left: 18px;
+  border-left: 4px solid var(--band-accent-strong);
+  margin-bottom: 14px;
+}
+
+.chain-quote cite {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.chain-body p {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.72;
+}
+
+.chain-return {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 27px;
+  padding: 18px 22px 18px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--text-muted);
+  border-left: 2px dashed color-mix(in srgb, var(--band-accent-strong) 55%, transparent);
+  padding-left: 28px;
+}
+
+.chain-return-arrow {
+  flex-shrink: 0;
+  font-size: 1.9rem;
+  font-style: normal;
+  line-height: 1;
+  color: var(--band-accent-strong);
 }
 
 /* ─── STATS ─── */
@@ -337,9 +578,8 @@
 }
 
 .case-highlight {
-  position: relative;
   margin: 0;
-  padding: 14px 18px 14px 34px;
+  padding: 14px 18px;
   font-size: 0.92rem;
   font-weight: 600;
   line-height: 1.55;
@@ -347,19 +587,10 @@
   background: var(--card-bg);
 }
 
-.case-highlight::before {
-  content: '';
-  position: absolute;
-  left: 18px;
-  top: calc(14px + 0.5em);
-  width: 7px;
-  height: 7px;
-  background: var(--green);
-  transform: rotate(45deg);
-}
-
 .case-highlight strong {
-  font-weight: inherit;
+  font-weight: 800;
+  font-size: 1.02em;
+  color: var(--accent);
 }
 
 .case-footnotes {
@@ -417,7 +648,15 @@
 }
 
 .case-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 28px;
+}
+
+.case-card .source-link {
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .case-badge {
@@ -494,6 +733,10 @@
   color: var(--accent);
 }
 
+.action-cell-link a {
+  color: inherit;
+}
+
 .case-card h3 {
   font-size: 1.02rem;
   font-weight: 800;
@@ -543,6 +786,18 @@
   font-weight: 600;
   line-height: 1.6;
   opacity: 0.85;
+}
+
+#sources .section-source {
+  margin-top: 20px;
+}
+
+#sources {
+  padding-bottom: clamp(36px, 4.5vw, 52px);
+}
+
+#sources + #license {
+  padding-top: clamp(36px, 4.5vw, 52px);
 }
 
 /* ─── BBB + legal context notes ─── */
@@ -881,6 +1136,11 @@
   border-left: 4px solid var(--band-accent-strong);
 }
 
+/* When the grid holds an odd number of cards, stretch the last one across the row */
+.reveal-grid > .reveal-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .reveal-card h3 {
   font-size: 1.08rem;
   font-weight: 800;
@@ -1031,7 +1291,15 @@
 }
 
 .response-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   padding: 26px;
+}
+
+.response-card .source-link {
+  margin-top: auto;
+  padding-top: 16px;
 }
 
 .response-card blockquote {

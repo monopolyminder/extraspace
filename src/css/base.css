@@ -28,14 +28,15 @@
   metric-matched fallback below and swaps in the real font as soon as it loads.
   Because the fallback is sized to match, that swap causes no layout shift — and
   the preload hints in the <head> make the real fonts available almost
-  immediately, so the swap is usually imperceptible.
+  immediately, so the swap is usually imperceptible. Only DM Sans and Bebas Neue
+  are preloaded (above-the-fold); Kalam loads on demand for no-JS wordmarks.
 */
 @font-face {
   font-family: 'Bebas Neue';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/bebas-neue-latin-400.woff2') format('woff2');
+  src: url('/fonts/bebas-neue-latin-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -43,7 +44,7 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/dm-sans-latin-var.woff2') format('woff2');
+  src: url('/fonts/dm-sans-latin-var.woff2') format('woff2');
 }
 
 @font-face {
@@ -51,7 +52,7 @@
   font-style: italic;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/dm-sans-latin-italic-var.woff2') format('woff2');
+  src: url('/fonts/dm-sans-latin-italic-var.woff2') format('woff2');
 }
 
 @font-face {
@@ -59,7 +60,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('../fonts/kalam-latin-700.woff2') format('woff2');
+  src: url('/fonts/kalam-latin-700.woff2') format('woff2');
 }
 
 /*
