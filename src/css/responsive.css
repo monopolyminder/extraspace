@@ -54,6 +54,21 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .money-loop {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .loop-arrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .machine-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
   .protect-grid {
     grid-template-columns: 1fr;
   }
