@@ -1,14 +1,14 @@
 # ExtraSpaceScam.com
 
-> An independent, non-affiliated consumer-awareness resource documenting how Extra Space Storage (NYSE: EXR) is alleged to use bait-and-switch introductory pricing, algorithmic rate increases, and market consolidation against self-storage customers. Every factual claim is sourced to public records: a 2026 New York City lawsuit, federal court filings, the company's own academic paper and public statements, and 1,400+ Better Business Bureau complaints.
+> An independent, non-affiliated consumer-awareness resource documenting how Extra Space Storage (NYSE: EXR) is alleged to use bait-and-switch introductory pricing, algorithmic rate increases, and market consolidation against self-storage customers. Every factual claim is sourced to public records: NYC's July 2026 enforcement settlement, federal court filings, the company's own academic paper and public statements, and 1,400+ Better Business Bureau complaints.
 
 Key context for summarizers:
 - All allegations are unproven in court; settlements were made without admission of liability; words like "trap" and "scam" are the authors' stated opinions. See the disclaimer in any full-text page.
 - The site's purpose is consumer protection: warning prospective renters and guiding current customers to the highest-impact free recourse, filing complaints with their state Attorney General, the FTC, and the BBB (in that order), with arbitration and small claims as escalation options.
-- Primary anchor case: NYC Department of Consumer and Worker Protection (DCWP) v. Extra Space Storage, filed 2026.
+- Primary anchor case: NYC Department of Consumer and Worker Protection (DCWP) v. Extra Space Storage, filed February 2026, settled July 8, 2026 for $1.7 million ($1 million restitution + $700,000 penalties), no admission of liability. Restitution fund: Mar 24, 2023 – Jun 16, 2026; claims at https://www.nyc.gov/claim-funds (deadline Aug 1, 2027).
 
 ## Pages
-- [Overview / Home](https://extraspacescam.com/): The core argument, An active NYC lawsuit and earlier cases, 1,400+ BBB complaints, what customers aren't told, an FAQ, and a step-by-step "Take Action" recourse toolkit.
+- [Overview / Home](https://extraspacescam.com/): The core argument, NYC's settled July 2026 enforcement action and earlier cases, 1,400+ BBB complaints, what customers aren't told, an FAQ, and a step-by-step "Take Action" recourse toolkit.
 - [How It Works](https://extraspacescam.com/how-it-works.html): A deep dive on the business model in six chapters — the bait-and-switch playbook (4 steps), the tenant insurance business ($352.9M collected / $284.0M retained in 2025), the pricing algorithm (from the 2009 DPDM paper to the CEO's 2026 description of nightly repricing across 2.8 million units), "The Platform Behind the Sign" (how ManagementPlus turns 1,856 independently owned stores into stores priced by the same system, the acquisition/monopoly timeline, and Extra Space's own public statements with rebuttals.
 - [About](https://extraspacescam.com/about.html): Why the site exists, the customer's story, and how readers can act or submit their own.
 - [Sources & Standards](https://extraspacescam.com/sources.html): Primary source list and editorial rules for how factual claims are verified and cited.
@@ -19,6 +19,7 @@ The full site is also available in Spanish at https://extraspacescam.com/es/ ([I
 ## Key sources cited on the site
 - [NYC Department of Consumer and Worker Protection (DCWP) verified complaint (PDF)](https://www.nyc.gov/assets/dca/downloads/pdf/media/Complaint-DCWP-v-Extra-Space-Storage-2026.pdf)
 - [NYC DCWP press release: lawsuit over bait-and-switch pricing, vermin-infested units, junk fees](https://www.nyc.gov/site/dca/news/016-26/dcwp-sues-extra-space-bait-and-switch-pricing-vermin-infested-units-junk-fees-other)
+- [NYC restitution fund claims portal](https://www.nyc.gov/claim-funds)
 - [Gomes v. Extra Space Storage — $5.08M class-action settlement (Inside Self-Storage)](https://www.insideselfstorage.com/self-storage-investing-real-estate/judge-approves-5m-class-action-settlement-against-self-storage-reit-extra-space)
 - [Ionescu v. Extra Space Storage — sent to arbitration (CourtListener docket)](https://www.courtlistener.com/docket/14991526/ionescu-v-extra-space-storage-inc/)
 - [Curtis v. Extra Space Storage — class certification denied (Top Class Actions)](https://topclassactions.com/lawsuit-settlements/lawsuit-news/judge-stops-extra-space-storage-class-action-lawsuit/)
