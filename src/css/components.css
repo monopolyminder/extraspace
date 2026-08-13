@@ -727,6 +727,67 @@
   color: var(--accent);
 }
 
+/* Restitution claim callout — flags eligible customers above the featured case */
+.claim-callout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px 28px;
+  margin-bottom: 24px;
+  padding: 20px 24px;
+  background: color-mix(in srgb, var(--green) 12%, var(--card-bg));
+  border: 1px solid color-mix(in srgb, var(--green) 45%, transparent);
+  border-left: 5px solid var(--green);
+  border-radius: 6px;
+}
+
+.claim-callout-badge {
+  grid-column: 1 / -1;
+  justify-self: start;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--green) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--green) 45%, transparent);
+  padding: 4px 10px;
+}
+
+.claim-callout-body h4 {
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.claim-callout-body p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.claim-callout-body p strong {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.claim-callout-cta {
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .claim-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .claim-callout-cta {
+    justify-self: stretch;
+  }
+}
+
 .case-footnotes {
   list-style: none;
   padding: 14px 16px 10px;
