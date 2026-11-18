@@ -854,6 +854,10 @@
   padding-top: 16px;
 }
 
+.case-card--pending {
+  margin-bottom: 36px;
+}
+
 .case-badge {
   display: inline-block;
   font-size: 0.65rem;
